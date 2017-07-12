@@ -1,0 +1,9 @@
+<apex:page standardController="Uploaded_Document__c" recordSetVar="Uploaded Documents" tabStyle="Uploaded_Document__c" extensions="downloadDocsController" action="{!downloadBoxFile}">
+<apex:form >
+        <apex:pageBlock title="Download"   >
+        <apex:pageBlockTable value="{!selected}" var="opp"/>
+        
+            <apex:pageMessages />
+            </apex:pageBlock>
+    </apex:form>
+    </apex:page>

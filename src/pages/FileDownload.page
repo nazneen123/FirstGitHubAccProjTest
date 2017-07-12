@@ -1,0 +1,39 @@
+<apex:page sidebar="false" Controller="DocumentDownloadController" >
+ <apex:form > 
+  
+ <apex:pageBlock title="Download Documents" id="pb">
+     <apex:pageMessages />
+         <apex:variable var="rowNum" value="{!0}"/>
+         <apex:pageblockSection columns="1">
+             <apex:pageBlockTable title="Documents" var="var_downloads" value="{!ListDocuments}"> 
+
+ <!--<apex:column headerValue="No." style="width:20px; text-align:center;" headerClass="centertext">-->
+                 <apex:outputText value="{0}" style="text-align:center;"> 
+                     <apex:param value="{!rowNum+1}" /> 
+                 </apex:outputText>
+<!-- </apex:column> -->
+                    <apex:column headerValue="Document ID" >
+                     <apex:outputText value="{!var_downloads.Name}"/>
+                    </apex:column> 
+                    <apex:column headerValue="Category" >
+                     <apex:outputText value="{!var_downloads.Category__c}"/>
+                    </apex:column> 
+                    <apex:column headerValue="Description" >
+                     <apex:outputText value="{!var_downloads.Description__c}"/>
+                    </apex:column> 
+                    <apex:column headerValue="Action" >
+                     <apex:commandLink value="Download" action="FileDownloadHelper"/>
+                    </apex:column> 
+             </apex:pageBlockTable>
+ 
+         </apex:pageblockSection>
+ 
+ 
+ </apex:pageBlock>
+ <div> 
+     <apex:commandButton value="Close" action="{!Close}"/>
+  
+   
+        </div>
+        </apex:form>
+</apex:page>

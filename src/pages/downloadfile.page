@@ -1,0 +1,36 @@
+<apex:page standardController="Application__c" extensions="DownloadFile">
+  <apex:form >
+         
+         <apex:pageBlock mode="mainDetail">
+             
+             <apex:pageBlockSection >
+             
+             <apex:pageBlockSectionItem >
+            <!-- <apex:image value="/servlet/servlet.FileDownload?file={!ImageId}" rendered="{!NOT(ISBLANK(ImageId))}"/>
+             </apex:pageBlockSectionItem>
+             
+             <apex:pageBlockSectionItem >
+             
+                 <apex:outputLabel value="Upload"></apex:outputLabel>
+                 
+                 
+                     <apex:inputfile id="uplaodfile" value="{!att.body}" fileName="{!att.name}"> </apex:inputfile>-->
+                     <apex:outputPanel >
+                         <apex:commandButton value="Download" action="{!downloadBoxFile}" />
+                 
+            
+
+                 
+                 
+                 </apex:outputPanel>
+             
+             </apex:pageBlockSectionItem>
+             
+             </apex:pageBlockSection>
+        
+         
+         
+         
+         </apex:pageBlock>
+     </apex:form>
+</apex:page>

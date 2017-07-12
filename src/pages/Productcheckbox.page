@@ -1,0 +1,29 @@
+<apex:page >
+<apex:form >
+    <apex:pageBlock >
+        <apex:pageBlockSection >
+            <apex:pageBlockSectionItem >product name<apex:inputText /></apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >Product item:
+                <apex:selectRadio >
+                    <apex:selectOption itemLabel="Mobile" itemValue="m"/>
+                    <apex:selectOption itemLabel="Accessories" itemValue="a"/>           
+                </apex:selectRadio>     
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >Skills:
+                <apex:selectcheckboxes layout="pageDirection">
+                    <apex:selectOption itemLabel="samsung" itemValue="s"/>
+                    <apex:selectOption itemLabel="Nokia" itemValue="N"/>    
+                    <apex:selectOption itemLabel="Apple" itemValue="A"/>
+                    <apex:selectOption itemLabel="HTC" itemValue="H"/>  
+                    <apex:selectOption itemLabel="Lenovo" itemValue="L"/>
+                    <apex:selectOption itemLabel="Moto G" itemValue="M"/>         
+                </apex:selectcheckboxes>     
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >Active?<apex:inputCheckbox /></apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+        <apex:pageBlockButtons >
+            <apex:commandButton value="Store"/>
+        </apex:pageBlockButtons>
+    </apex:pageBlock>
+</apex:form>
+</apex:page>

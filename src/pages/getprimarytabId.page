@@ -1,0 +1,18 @@
+<apex:page >
+    <A HREF="#" onClick="testGetPrimaryTabIds();return false">
+        Click here to get the primary tab IDs</A> 
+
+    <apex:includeScript value="/support/console/29.0/integration.js"/>
+    <script type="text/javascript">
+        function testGetPrimaryTabIds() {
+              var id = sforce.console.getPrimaryTabIds(showTabId);
+              
+        }
+        
+        var showTabId = function showTabId(result) {
+            //Display the primary tab IDs
+            var tabId = result.ids;
+            alert('Primary Tab IDs: ' + tabId );
+            };
+  </script>
+</apex:page>

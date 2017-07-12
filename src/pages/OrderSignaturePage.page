@@ -1,0 +1,102 @@
+<apex:page standardController="Application__c" extensions="SignController" standardStylesheets="false" showHeader="false" sidebar="false">
+    <meta charset="utf-8"/>
+    <style>
+    body { font: normal 100.01%/1.375 "Helvetica Neue",Helvetica,Arial,sans-serif; }
+  </style>
+    <apex:stylesheet value="{!URLFOR($Resource.jQuerySignature, 'jquery.signaturepad.css')}"/>
+    <!--[if lt IE 9]><apex:includeScript value="{!URLFOR($Resource.jQuerySignature, 'flashcanvas.js')}"/><![endif]-->
+    <apex:includeScript value="{!URLFOR($Resource.jQuerySignature, 'jquery.min.js')}"/>
+    
+    <form method="post" action="" class="sigPad">
+        <label for="name">Print your name</label>
+        <input type="text" name="name" id="name" class="name"/>
+        <p class="typeItDesc">Review your signature</p>
+        <p class="drawItDesc">Draw your signature</p>
+        <ul class="sigNav">
+          <li class="typeIt"><a href="#type-it" class="current">Type It</a></li>
+          <li class="drawIt"><a href="#draw-it">Draw It</a></li>
+          <li class="clearButton"><a href="#clear">Clear</a></li>
+        </ul>
+        <div class="sig sigWrapper" style="width:440px; height:100px; border-style: solid; border-width: 2px;">
+         <div class="typed" id="typeit"></div>
+         <canvas class="pad" width="440" height="100" id="signatureCanvas"></canvas>
+         <canvas width="440" style="display:none;" height="100" id="typeInCanvas"></canvas>
+         <input type="hidden" name="output" class="output" id="hidden"></input>
+      </div>
+
+        <input type="button" onclick="saveSignature();" value="Accept" class="btn" target="_parent" />
+    </form>
+    <apex:includeScript value="{!URLFOR($Resource.jQuerySignature, 'jquery.signaturepad.js')}"/>
+    <script>
+        j$ = jQuery.noConflict();
+        var api;
+        j$(document).ready(function() {
+            api = j$('.sigPad').signaturePad();
+        });
+
+        var canvas;
+        var RecordID = '';
+        function saveSignature() {
+          canvas = document.getElementById("signatureCanvas");
+          canvas2 = document.getElementById("typeInCanvas");
+          var drawingDetail = document.getElementById("hidden");
+          var curnt = j$('.current').text();
+          console.log('----'+curnt);
+          RecordId = '{!appId}';
+          var imgData;
+          typeSign = j$('#typeit').text();
+          var ctx;
+          ctx = canvas2.getContext('2d');
+          ctx.drawImage(canvas, 0, 0);
+          if(curnt == 'Type It'){
+          if (typeSign != '') {
+              console.log('**------' + typeSign);
+              typeSign = typeSign.trim();
+              //----------------------------------
+              var withoutSpaceStr='';
+              var count =0;
+              for(var i = 0; i< typeSign.length;i++){
+                  var ch = typeSign.charAt(i);
+                  if(ch==' '){
+                   count++;
+                   if(count<2){
+                       withoutSpaceStr += typeSign.charAt(i);
+                   }
+                 }else{
+                  count =0;
+                  withoutSpaceStr += typeSign.charAt(i);
+                 } 
+               }  
+              //----------------------------------
+               ctx.fillStyle = 'blue';
+               ctx.font="20px Journal";
+               // Bradley Hand ITC
+               ctx.fillText(withoutSpaceStr, 10, 30);               
+          }else{
+             alert('Invalid Signature');
+             return;
+          }
+         }else{
+             if(drawingDetail.value==''){
+                 alert('Invalid Signature');
+                 return;
+             }
+         }
+          
+          imgData = canvas2.toDataURL();
+          imgData = imgData.split(',')[1];
+           
+          strDataURI = imgData;
+        
+          captureSignature(strDataURI, RecordId);
+        }
+        
+    </script>
+    <apex:includeScript value="{!URLFOR($Resource.jQuerySignature, 'json2.min.js')}"/>
+    <apex:form >
+        <apex:actionFunction name="captureSignature" action="{!captureSignature}" reRender="">
+            <apex:param name="imageData" value=""/>
+            <apex:param name="appId" value=""/>
+        </apex:actionFunction>
+    </apex:form>
+</apex:page>

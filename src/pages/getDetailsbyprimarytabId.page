@@ -1,0 +1,90 @@
+<apex:page >
+<apex:form >
+    <apex:includeScript value="/support/console/29.0/integration.js"/>
+    
+  <a href="#" onClick="testGetDetailsByPrimaryTabId();">Get Chat Details</a> 
+    <A HREF="#" onClick="testGetPrimaryTabIds();return false">Click here to get the primary tab IDs</A>
+    
+
+
+    <script type="text/javascript">
+   
+    var tabId;
+    var ID;
+    function testGetPrimaryTabIds() {
+              var id = sforce.console.getPrimaryTabIds(showTabId);
+              
+        }
+        
+        var showTabId = function showTabId(result) {
+            //Display the primary tab IDs
+            tabId= result.ids;
+            alert('Primary Tab IDs: ' + tabId);
+            //testGetDetailsByPrimaryTabId(tabId);
+            };
+
+         function testGetDetailsByPrimaryTabId() {
+            //var id = sforce.console.getPrimaryTabIds(showTabId);
+            //Get the value for 'myPrimaryTabId'from the getPrimaryTabIds() or getEnclosingPrimaryTabId() methods. 
+            //These values are for example purposes only
+            var primaryTabId = tabId;
+            //alert('primaryTabId:'+ primaryTabId);
+            sforce.console.chat.getDetailsByPrimaryTabId(primaryTabId, getDetailsSuccess);
+        }
+        
+         function getDetailsSuccess(result) {
+            //Report whether accepting the chat was succesful
+            if (result.success == true) {
+                console.log(result);
+                chatKey = result.details.chatKey;
+                alert('The chatKey for this chat is: ' + chatKey);
+
+                var customDetails = [];
+                customDetails  = result.details.customDetails;
+                
+                //alert('Checkpoint-1:' + result.details.customDetails.length);
+                //alert('Checkpoint-2:' + result.details.customDetails);
+                //alert('Checkpoint-3:' + customDetails.length);
+               
+               //alert('custom details:' + customDetails);
+              // alert('Checkpoint-4:' + customDetails[0].label + '= '+ customDetails[0].value);
+              // alert('Checkpoint-5:' + customDetails[1].label + '= '+ customDetails[1].value);
+               //alert('Checkpoint-6:' + customDetails[2].label + '= '+ customDetails[2].value);
+               alert('Checkpoint-7:' + customDetails[3].label + '= '+ customDetails[3].value); 
+               //alert('Checkpoint-8:' + customDetails[4].label + '= '+ customDetails[4].value); 
+               
+               var name = customDetails[0].value;
+                ID = customDetails[3].value;
+               alert(ID);
+               
+            
+              // var url = 'URLFOR($Action[Application__c].New, null),'')}' + '?mode=autocomplete&suggestValue=' + ID;
+               //var QryAccount="select Id,Name from Application__c";
+               
+               alert(QryAccount);
+               
+               
+                     
+               //alert(customDetails[1].label + '= '+ customDetails[1].value);                                    
+            } else {
+                alert('Getting the details was not Succesful');
+            }
+            
+            
+            
+        
+           
+        };
+        
+        
+        function newDoc(ID) {
+        alert(ID);
+        window.top.location.href ='https://ap2.salesforce.com/'+ID;
+        }
+        
+
+    </script>
+    
+    <apex:commandbutton value="getURL" onclick="newDoc(ID);"/>
+    </apex:form>
+</apex:page>

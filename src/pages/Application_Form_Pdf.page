@@ -1,0 +1,211 @@
+<apex:page sidebar="false" Controller="ApplicationFormPDFController" showheader="false" renderAs="pdf" cache="true">
+ 
+<html>
+    <!-- <apex:composition template="communitytemplate">
+      <apex:define name="custompage">-->
+    <body> 
+    
+    <apex:form >
+   
+    
+   
+<div id="container"> 
+         
+                
+             <!--   <apex:image id="theImage1" value="{!$Resource.slcheaderimages}" width="1000" height="150"/> -->
+          <!--  <span style="padding-left:70px"/>  
+              <apex:image id="theImage" value="{!$Resource.Flow}" width="900" height="100" />-->
+             
+           
+<div class="sidebar">
+</div>
+<div class="content">
+<div class="requireddiv ">     
+ <apex:pageMessages id="msgs"></apex:pageMessages>  </div>
+
+    <center><div class="title">
+                       <h2>APPLICATION FOR THE GRANT OR RENEWAL OF A FIREARM AND/OR SHOTGUN CERTIFICATE</h2>
+    </div></center>
+    <div id="formContent">
+     
+        <span id="spacespan"></span>
+        <div id="step1">
+        <span id="step1id">
+       
+  <h2><u>Personal Details</u></h2>
+     <apex:panelGrid columns="2" id="grid_personalDetail" title="Personal Details">
+     
+     
+      
+      License Type:  <apex:outputText value="{!app_Pdf.License_Type__c}" id="License_Type"/>
+      Application Status: <apex:outputText value="{!app_Pdf.Application_Status__c}" id="Application_Status"/>
+      Payment Status: <apex:outputText value="{!app_Pdf.Payment_Status__c}" id="Payment_Status"/>
+      
+      Title    :  <apex:outputText value="{!conrecordPdf.Name}" id="title"/>
+      Surname:  <apex:outputText value="{!conrecordPdf.LastName}" id="LastName"/>
+      Previous surname(s) : <apex:outputText value="{!conrecordPdf.Previous_surname_s__c}" id="Previous_surname"/>
+      Forenames (state all) : <apex:outputText value="{!conrecordPdf.Forenames_state_all__c}" id="Forenames"/>
+      Gender :  <apex:outputField value="{!conrecordPdf.Gender__c}" id="gender"/>
+      Nationality :  <apex:outputField value="{!conrecordPdf.Nationality__c}" id="Nationality"/>
+      Place of birth :  <apex:outputField value="{!conrecordPdf.Place_of_birth__c}" id="Place_of_birth"/>
+      Date Of Birth :  <apex:outputField value="{!conrecordPdf.Birthdate}" id="Birthdate"/>
+      Occupation :  <apex:outputField value="{!conrecordPdf.Occupation__c}" id="Occupation"/>
+      Height in cm:  <apex:outputField value="{!conrecordPdf.Height_in_cm__c}" id="Height_in_cm"/>
+      Languages :  <apex:outputField value="{!conrecordPdf.Languages__c}" id="Languages"/>
+      Level :  <apex:outputField value="{!conrecordPdf.Level__c}" id="Level"/>
+      
+      Application Name :  <apex:outputField value="{!app_Pdf.Name}" id="appname"/>
+      You suffer from any medical condition :  <apex:outputField value="{!app_Pdf.You_suffer_from_any_medical_condition__c}" id="You_suffer_from_any_medical_condition"/>
+      Details of medical Conditions :  <apex:outputField value="{!app_Pdf.Details_Of_medical_Conditions__c}" id="Details_Of_medical_Conditions"/>
+      Any treatment for depression or other :  <apex:outputField value="{!app_Pdf.treatment_for_depression_or_other__c}" id="treatment_for_depression_or_other"/>
+      Details of medical treatment :  <apex:outputField value="{!app_Pdf.Detailsmedicaltreatment__c}" id="Detailsmedicaltreatment"/>
+      
+     </apex:panelGrid><br/>
+         
+    <!--  <apex:dataTable value="{!offenceList}" var="a">
+    <apex:column headerValue="offence Name">Offence Name:  <apex:outputText value="{!offenceList.Name}" id="offence_name"/></apex:column>
+    <!--  Offence Name:  <apex:outputText value="{!offenceList.Name}" id="offence_name"/>
+      Offence Date:  <apex:outputText value="{!offenceList.Date__c}" id="offence_date"/>
+      </apex:dataTable>
+    -->
+  
+   <div class="title" >
+    <apex:pageBlock rendered="{!renderOffencePDF}" >
+    <u><h2>Offences</h2></u>
+    <apex:pageBlockSection >
+    <apex:pageBlockTable value="{!FinaloffenceListPDF}" var="off_list" border="1"  cellspacing="1" cellpadding="8" rendered="{!renderOffencePDF}">
+    
+    <apex:column headerValue="Offence Name" >
+        <apex:outputField value="{!off_list.Name}"/>
+    </apex:column>
+    <apex:column headerValue="Offence Date">
+        <apex:outputField value="{!off_list.Date__c}"/>
+    </apex:column>  
+  
+    </apex:pageBlockTable>
+    </apex:pageBlockSection>
+    </apex:pageBlock> 
+   
+    </div>
+  
+  
+    <apex:pageBlock rendered="{!renderPrevAddressPDF}">
+    <u><h2>Previous Address</h2></u>
+    <apex:pageBlockSection >
+    <apex:pageBlockTable value="{!FinalprevaddrListPDF}" var="prevadd_list"  border="2"  cellspacing="1" cellpadding="8"  rendered="{!renderPrevAddressPDF}">
+    <apex:column headerValue="Address Line1" rendered="{!renderPrevAddressPDF}">
+        <apex:outputField value="{!prevadd_list.Address_Line_1__c}"/>
+    </apex:column>
+    <apex:column headerValue="Address Line2" rendered="{!renderPrevAddressPDF}">
+        <apex:outputField value="{!prevadd_list.Address_Line_1__c}"/>
+    </apex:column>
+    <apex:column headerValue="Country" rendered="{!renderPrevAddressPDF}">
+        <apex:outputField value="{!prevadd_list.Country__c}"/>
+    </apex:column>
+    <apex:column headerValue="State" rendered="{!renderPrevAddressPDF}">
+        <apex:outputField value="{!prevadd_list.State__c}"/>
+    </apex:column>
+    <apex:column headerValue="Postcode" rendered="{!renderPrevAddressPDF}">
+        <apex:outputField value="{!prevadd_list.Postcode__c}"/>
+    </apex:column>
+    <apex:column headerValue="From" rendered="{!renderPrevAddressPDF}">
+        <apex:outputField value="{!prevadd_list.From__c}"/>
+    </apex:column>
+    <apex:column headerValue="To" rendered="{!renderPrevAddressPDF}">
+        <apex:outputField value="{!prevadd_list.To__c}"/>
+    </apex:column>
+    
+    
+    </apex:pageBlockTable>
+    </apex:pageBlockSection>
+    </apex:pageBlock> 
+  
+    <apex:pageBlock rendered="{!renderArmReqPDF}">
+    <u><h2>Arms Requested</h2></u>
+    <apex:pageBlockSection >
+    <apex:pageBlockTable value="{!FinalarmreqListPDF}" var="armsreq_list"  border="2"  cellspacing="1" cellpadding="8" rendered="{!renderArmReqPDF}">
+     <apex:column headerValue="Type" rendered="{!renderArmReqPDF}">
+        <apex:outputField value="{!armsreq_list.Type__c}"/>
+    </apex:column>
+    <apex:column headerValue="Calibre" rendered="{!renderArmReqPDF}">
+        <apex:outputField value="{!armsreq_list.Calibre__c}"/>
+    </apex:column>
+    <apex:column headerValue="Reason" rendered="{!renderArmReqPDF}">
+        <apex:outputField value="{!armsreq_list.Reason__c}"/>
+    </apex:column>
+    
+    </apex:pageBlockTable>
+    </apex:pageBlockSection>
+    </apex:pageBlock> 
+ <!--   <br/><br/>-->
+  
+  
+     <!--<div style="page-break-after:always;"/>-->
+     <apex:repeat value="{!refreesListPDF}" var="ref1"  rendered="{!renderRefree1PDF}" >
+     <u><h2>Refree</h2></u>
+     <apex:panelGrid columns="2" id="grid_refree" title="Refree"  rendered="{!renderRefree1PDF}">
+      Title :  <apex:outputText value="{!ref1.Title__c}"/>
+      Surname:  <apex:outputText value="{!ref1.Surname__c}"/>
+      Forenames state all:  <apex:outputText value="{!ref1.Forenames_state_all__c}" id="refforenames"/>
+      Date of birth:  <apex:outputText value="{!ref1.Date_of_birth__c}" id="refdob"/>
+      Occupation :  <apex:outputText value="{!ref1.Occupation__c}" id="refoccupation"/>
+      Place of Birth :  <apex:outputText value="{!ref1.Place_of_Birth__c}" id="refplaceofbirth"/>
+      Home address:  <apex:outputText value="{!ref1.Home_address__c}"/>
+      Mobile number:  <apex:outputText value="{!ref1.Mobile_number__c}"/>
+      Email :  <apex:outputText value="{!ref1.Email__c}" id="refEmail"/>
+      Work Email:  <apex:outputText value="{!ref1.Work_Email__c}"/>
+      Tel number:  <apex:outputText value="{!ref1.Tel_number__c}"/>
+      Work Tel number:  <apex:outputText value="{!ref1.Work_Tel_number__c}"/>
+      Postcode:  <apex:outputText value="{!ref1.Postcode__c}"/>
+      In what capacity do you know the referee:  <apex:outputText value="{!ref1.In_what_capacity_do_you_know_the_referee__c}"/>
+      How long has the referee known you:  <apex:outputText value="{!ref1.How_long_has_the_referee_known_you__c}"/>
+        
+     </apex:panelGrid><br/>
+     </apex:repeat>   
+    
+      
+      <h2><u>Type Of Security</u></h2>   
+     <apex:panelGrid columns="2" id="grid_typeofsecurity1" title="typeofsecurity" rendered="{!renderTypeOfSecurityPDF}">
+      Type :  <apex:outputText value="{!tosPDF.Type__c}"/>
+      security arrangements :  <apex:outputText value="{!tosPDF.security_arrangements__c}"/>
+      Details of security arrangements:  <apex:outputText value="{!tosPDF.Details_of_security_arrangements__c}" />
+      Type of security :  <apex:outputText value="{!tosPDF.Type_of_security__c}" />
+      Security Details:  <apex:outputText value="{!tosPDF.Security_Details__c}"/>
+      security shared with anothers :  <apex:outputText value="{!tosPDF.security_shared_with_anothers__c}" />
+      Security shared Details :  <apex:outputText value="{!tosPDF.Security_shared_Details__c}"/>
+      Ammunition storage details :  <apex:outputText value="{!tosPDF.Ammunition_storage_details__c}"/>
+         
+    </apex:panelGrid>
+  
+     <apex:panelGrid rendered="{!renderNominatedLCPDF}">
+      <u><h2>Nominated Land and Club</h2></u>
+      <apex:panelGrid columns="2" id="grid_NominatedLandandClub" title="NominatedLandandClub"  rendered="{!renderNominatedLCPDF}">
+      
+      Name address of land :  <apex:outputText value="{!nlcPDF.Name_address_of_land__c}"  rendered="{!renderNominatedLCPDF}" />
+      Landowner's name :  <apex:outputText value="{!nlcPDF.Landowner_s_name__c}"  rendered="{!renderNominatedLCPDF}"/>
+      Landowner's telephone :  <apex:outputText value="{!nlcPDF.Landowner_s_telephone__c}" rendered="{!renderNominatedLCPDF}" />
+      Acreage of land :  <apex:outputText value="{!nlcPDF.Acreage_of_land__c}"  rendered="{!renderNominatedLCPDF}"/>
+      Calibres authorised :  <apex:outputText value="{!nlcPDF.Calibres_authorised__c}" rendered="{!renderNominatedLCPDF}"/>
+      The use is for :  <apex:outputText value="{!nlcPDF.The_use_is_for__c}" rendered="{!renderNominatedLCPDF}" />
+      If in use for others :  <apex:outputText value="{!nlcPDF.If_in_use_for_others__c}" rendered="{!renderNominatedLCPDF}"/>
+      Club name :  <apex:outputText value="{!nlcPDF.Club_name__c}" rendered="{!renderNominatedLCPDF}"/>
+      Club Secretary's name :  <apex:outputText value="{!nlcPDF.Club_Secretary_s_name__c}" rendered="{!renderNominatedLCPDF}"/>
+      Membership expiry Date :  <apex:outputText value="{!nlcPDF.Membership_expiry_Date__c}" rendered="{!renderNominatedLCPDF}"/>
+   
+    </apex:panelGrid>
+  </apex:panelGrid>
+    
+        </span>
+        </div> 
+               
+ 
+        </div> 
+        </div>
+</div>
+
+</apex:form>
+</body>
+<!--</apex:define>
+ </apex:composition>-->
+</html>
+</apex:page>

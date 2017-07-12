@@ -1,0 +1,9 @@
+<apex:page standardController="Application__c" standardStylesheets="false" showHeader="false" sidebar="false" extensions="ApplicationStatusController">
+<!-- {!$CurrentPage.parameters.Id}-->
+
+  <apex:image url="{!URLFOR($Resource.AppStatusProgress,imageName)}" width="95%"/>
+<!--  <apex:image url="{!URLFOR($Resource.statusProgress,imageName)}"/>-->
+
+   
+              
+</apex:page>

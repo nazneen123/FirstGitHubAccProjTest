@@ -1,0 +1,15 @@
+<apex:page showHeader="false">
+<script type='text/javascript' src='https://c.la10.salesforceliveagent.com/content/g/js/36.0/prechat.js'></script>
+<script type="text/javascript">
+var detailCallback = function (details){
+    alert(details.customDetails.length);
+    for (var i = 0; i < details.customDetails.length; i++) {
+        if(details.customDetails[i].label == 'Email'){
+            alert(details.customDetails[i].value);
+            console.log(details.customDetails[i].value);
+        }
+    }
+};
+liveagent.details.preChatInit('https://c.la10.salesforceliveagent.com/chat','detailCallback');
+</script>
+</apex:page>

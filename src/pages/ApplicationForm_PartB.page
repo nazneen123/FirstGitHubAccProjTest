@@ -1,0 +1,154 @@
+<apex:page sidebar="false" Controller="ApplicationFormController" showheader="false" >
+ 
+<html>
+<apex:composition template="communitytemplate">
+  <apex:define name="custompage">
+    <body> 
+    
+    <apex:form >
+    
+    
+   
+<div id="container"> 
+         
+                
+                <apex:image id="theImage1" value="{!$Resource.slcheaderimages}" width="1000" height="150"/> 
+          <!--  <span style="padding-left:70px"/>  
+              <apex:image id="theImage" value="{!$Resource.Flow}" width="900" height="100" />-->
+             
+           
+<div class="sidebar">
+</div>
+<div class="content">
+<style type="text/css">
+    #step2 , #step3
+    {
+        display:none;
+    }
+    .content requireddiv
+    {
+    font-size:80% !important; padding: 0,0,0,0;
+    
+    }
+    
+     </style>  
+<div class="requireddiv ">     
+ <!--<apex:pageMessage id="msgs"></apex:pageMessage> -->
+ <apex:pageMessages id="showmsg" escape="true" ></apex:pageMessages>
+  </div>
+
+    <div class="title">
+                       <h2>APPLICATION FOR THE GRANT OR RENEWAL OF A FIREARM AND/OR
+SHOTGUN CERTIFICATE</h2>
+    </div>
+    <div id="formContent">
+        <div class="info">
+            <div>PART B: Personal health and medical declaration</div>
+        </div> 
+        <span id="spacespan"></span>
+        <div id="step1">
+        <span id="step1id">
+
+        <div class="line" id="p1">
+            <label>Do you suffer from any medical conditions? <span class="req">*</span></label>
+                <div class="inline">
+                    <div>               
+                        <pre><apex:inputField value="{!app.You_suffer_from_any_medical_condition__c}" required="true" /> 
+                       </pre>        
+                    </div>             
+                </div>
+        </div>
+        
+        <div class="line" id="p1">
+            <label>Details Of medical Conditions (If yes )<span class="req"></span></label>
+                <div class="w100">
+                    <div>              
+                    <apex:inputField value="{!app.Details_Of_medical_Conditions__c}"/>             
+                <br/>                  
+                    </div>             
+                </div>
+        </div>
+        
+        <div class="line" id="p1">
+            <label>Have you ever received treatment for depression or any other kind of mental health condition?<span class="req">*</span></label>
+                <div class="inline">
+                    <div>              
+                        <pre><apex:inputField value="{!app.treatment_for_depression_or_other__c}" required="true"/> 
+                    </pre>
+                               
+                <br/>                   
+                    </div>             
+                </div>
+        </div>
+        
+        <div class="line" id="p1">
+            <label>Treatment for depression or other ( If yes)<span class="req"></span></label>
+                <div class="w100">
+                    <div>              
+                    <apex:inputField value="{!app.Detailsmedicaltreatment__c}"/>             
+                <br/>                  
+                    </div>             
+                </div>
+        </div>
+        
+        <div class="line" id="p1">
+            <label>Details of your GP / Specialist<span class="req">*</span></label>
+                <div class="inline">
+                    <div>              
+                    a) Name  <span class="req">*</span>  <br/>    <apex:inputField value="{!app.GP_Name__c}" required="true" />   <br/> 
+                    b) Address   <br/>  <apex:inputField value="{!app.GP_Address__c}"/> <br/>  
+                    c) Postcode   <br/> <apex:inputField value="{!app.GP_Postcode__c}"/> <br/>  
+                    d) Tel number <span class="req">*</span> <br/> <apex:inputField value="{!app.GP_Tel_number__c}" required="true" /> <br/>  
+                    e) E‐mail     <br/> <apex:inputField value="{!app.GPE_mail__c}"/> <br/><br/>  
+                                  
+                    </div>             
+                </div>
+        </div>
+        
+        
+
+        </span>
+        </div> 
+               
+
+<div><pre>
+
+<apex:inputField value="{!app.Disclaimer__c}" id="rule"/>   I give the police permission to contact my GP and/or specialist to obtain factual details of any medical history in respect of
+ this application.This authority is valid for the life of the certificate(s).
+ I understand that my GP may share sensitive personal data with the police concerning my physical and mental health for the
+ purpose of enabling the police to make a fully informed decision on my application and I hereby consent to this processing of my
+ personal data. 
+  <!--<apex:message for="rule" styleClass="errorMessage"/>-->
+  
+ </pre>
+ </div>    
+ 
+              <div class="inline">
+                 Applicant’s name    &nbsp;&nbsp;&nbsp;&nbsp; <apex:outputText value="{!con.Name}"></apex:outputText> <br/>  <br/>
+                   
+                
+                Date: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<apex:outputText value="{!TODAY()}"/> <br/>  <br/> 
+                                     
+            </div>
+            <br/> <br/> 
+           
+       
+     <div>
+   <apex:commandButton value=" Previous " action="{!PreviousButton_PartB}"/> &nbsp;&nbsp;&nbsp;&nbsp;
+   <apex:commandButton value="     Next     " action="{!NextButton_PartB}" /> 
+   <!--<apex:commandButton value="Show Error Button" action="{!show_error}" reRender="showmsg"/> -->
+   <!--<apex:commandButton value="Update" action="{!valid}" style="width:90px" rerender="showmsg"/> -->
+   
+        </div>
+             <div id="footer">      
+           </div> 
+            </div> 
+        </div>
+</div>
+
+</apex:form>
+</body>
+</apex:define>
+ </apex:composition>
+</html>
+</apex:page>

@@ -1,0 +1,84 @@
+<apex:page controller="MyCertificateHandler" renderAs="PDF" sidebar="false"  showheader="false" cache="true">
+    <html>
+                <body>  
+                    <apex:form >
+                        <div id="container">                          
+                            <apex:image id="theImage1" value="{!$Resource.slcheaderimages}" width="412" height="168"/>                             
+                            <div class="sidebar"></div>
+                            <div class="content"><!--
+                                <style type="text/css">
+                                #step2 , #step3
+                                {
+                                    display:none;
+                                }
+                                .content requireddiv
+                                {
+                                    font-size:80% !important; padding: 0,0,0,0;    
+                                }
+                                </style>-->
+                                <div class="requireddiv ">     
+                                    <apex:pageMessages id="msgs"></apex:pageMessages>  
+                                </div>
+                                
+                                <div id="formContent">
+                                    <span id="spacespan"></span>
+                                    <div id="step1">
+                                        <span id="step1id">
+                                            <!----------------------------------------Content Start----------------------------------------------------------->   
+                                            
+                                            <table width="700" >
+                                                <tr>
+                                                    <td>
+                                                        <apex:panelGrid columns="2" border="1"  id="grid1" >                        
+                                                            Application Number  :  <apex:outputText value="{!objWrap.app.Name}" id="License_Type"/>
+                                                            Contact Name        : <apex:outputText value="{!objWrap.con.Name} " id="Contact_Name"/>
+                                                        </apex:panelGrid>      
+                                                    </td>
+                                                    <td> &nbsp; </td>
+                                                    <td>                                                        
+                                                        <apex:variable var="img" value="{!photo}" />
+                                                        <apex:image url="{!img}" width="100" height="100" /> 
+                                                        <!-- <apex:image url="{!URLFOR($Resource.test, 'images/ph1.jpg')}" width="100" height="100" /> --->
+                                                    </td>
+                                                </tr>
+                                            </table>                                                                                                        
+                                            
+                                            <h2><u>Certificate</u></h2>
+                                            
+                                            <table  border="1" width="700" >                                                    
+                                                    <tr>
+                                                        <td>Name :</td>
+                                                        <td>Type :</td> 
+                                                        <td> Date of Issue :</td>
+                                                        <td>Date of Expiry :    </td>                                                        
+                                                    </tr> 
+                                                    <tr>
+                                                        <td>{!objWrap.crt.Name}</td> 
+                                                        <td>{!objWrap.crt.Type__c}</td>
+                                                        <td>{!objWrap.crt.Date_of_Issue__c}</td>
+                                                        <td> {!objWrap.crt.Date_of_Expiry__c}</td>
+                                                    </tr> 
+                                            </table>
+                                            
+                                            <br/><br/>
+                                            <h2><u>Arm Held</u></h2>
+                                            
+                                            <apex:pageBlock >                                                
+                                                <apex:pageBlockTable border="1" width="700" value="{!armList}" var="al" >
+                                                    <apex:column value="{!al.Name}" />
+                                                    <apex:column value="{!al.Type__c}" />
+                                                    <apex:column value="{!al.Calibre__c}" />
+                                                    <apex:column value="{!al.Make__c}" />
+                                                    <apex:column value="{!al.Arms_Renewal__c}" />                                                    
+                                                </apex:pageBlockTable>
+                                            </apex:pageBlock>
+                                            <!----------------------------------------Content end----------------------------------------------------------->
+                                        </span>
+                                    </div>                                                                          
+                                </div>         
+                            </div>
+                        </div>
+                    </apex:form>
+                </body>
+    </html>
+</apex:page>

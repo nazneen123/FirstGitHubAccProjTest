@@ -1,0 +1,111 @@
+<apex:page sidebar="false"  controller="ApplicationManagementController"  showheader="false" cache="true">
+<apex:outputPanel id="tst">
+
+
+  
+<html>
+<title>Payment Details </title>
+    <body> 
+        <style>
+    body { font: normal 100.01%/1.375 "Helvetica Neue",Helvetica,Arial,sans-serif; }
+  </style>
+      <apex:form >
+    
+    <script type="text/javascript">
+             
+    <!--   
+    function callChangePaymentStatus()
+    {
+        alert("callChangePaymentStatus Funtion called");
+        PaymentStatus();
+        
+    } -->
+    function windowclose()
+    {
+        alert("close called");
+        
+        if(window.parent)
+        {
+            
+            window.parent.close();
+        }  
+    }
+    
+    </script>
+   
+    
+    <apex:actionFunction action="{!ChangePaymentStatus}" name="PaymentStatus" /> 
+    
+      <table border='2' bgcolor="#f0f0f5" cellspacing='5' cellpadding='5' width='15%' align="center">
+      <tr>
+      <th cellpadding='5'>
+              &nbsp;Enter Payment Details
+      </th>
+      </tr>
+      <tr>
+           <td cellspacing='5'>    <div class="line" id="p1">
+                    <label>Card Number</label>
+                    <div class="inline">
+                        <div>  
+                             <apex:inputField value="{!pay.Card_Number__c}" /> 
+           
+                        </div>
+                     </div>
+               </div>
+            </td>
+      </tr>    
+           <tr>
+           <td>    <div class="line" id="p1">
+                    <label>Expiry Date</label>
+                    <div class="inline">
+                        <div>  
+                            <apex:inputField value="{!pay.Expiry_Date__c}"/>
+                        </div>
+                     </div>
+               </div>
+           </td>
+           </tr>
+           <tr>
+           <td>
+              <div class="line" id="p1">
+                <label>CVV</label>
+                <div class="inline">
+                    <div>       
+                        <!-- <input type="password" id="cvv" class="name"/>         -->
+                       <apex:inputField value="{!pay.CVV__c}" /> 
+                    </div>
+                                
+                </div>
+        </div>
+        </td></tr>
+      
+        <tr>
+           <td> <div class="line" id="p1">
+             <label>Name on Card</label>
+                <div class="inline">
+                    <div>     
+                        <!--<input type="text" id="nameoncard" class="name"/>  -->
+                                
+                        <apex:inputField value="{!pay.Name_on_Card__c}" /> 
+           
+                    </div>
+                                
+                </div>
+        </div>
+       </td></tr>
+       <tr><td> <div>
+           
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <apex:commandButton value=" Save" action="{!ChangePaymentStatus}"  />
+           <apex:commandButton value=" Close"  action="{!CloseWindow}"  />
+
+            
+        </div></td></tr>
+        
+        </table>
+        
+     </apex:form>
+    </body>
+</html>
+</apex:outputPanel>
+</apex:page>

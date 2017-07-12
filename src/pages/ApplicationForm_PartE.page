@@ -1,0 +1,191 @@
+<apex:page sidebar="false" Controller="ApplicationFormController" showheader="false">
+<html>
+
+
+<head>
+        <style>
+            .date
+            {margin:right;}
+        </style>
+        <apex:stylesheet value="{!$Resource.new}"/>
+    </head>
+    <apex:composition template="communitytemplate">
+  <apex:define name="custompage">
+    <body> 
+    <apex:form >
+        <div id="container"> 
+                <apex:image id="theImage1" value="{!$Resource.slcheaderimages}" width="1000" height="150"/> 
+          <!--  <span style="padding-left:70px"/>  
+              <apex:image id="theImage" value="{!$Resource.Flow}" width="900" height="100" />-->
+        <div class="sidebar">
+        </div>
+            <div class="content">
+        <style type="text/css">
+            #step2 , #step3
+        {
+            display:none;
+        }
+        .content requireddiv
+        {
+            font-size:80% !important; padding: 0,0,0,0;
+        }
+     </style>  
+        <div class="requireddiv ">     
+         <apex:pageMessages id="msgs"></apex:pageMessages>  </div>
+
+    <div class="title">
+                       <h2>APPLICATION FOR THE GRANT OR RENEWAL OF A FIREARM AND/OR SHOTGUN CERTIFICATE</h2>
+    </div>
+    <div id="formContent">
+        <div class="info">
+            <div><h2>PART E: Shotgun details (if applicable).</h2><br/>
+            </div>
+        </div> 
+        <span id="spacespan"></span>
+        <div id="step1">
+        <span id="step1id">
+
+        
+      <apex:pageBlock title="Shotgun Held" id="pb">
+      
+      <apex:commandButton value="Add Selected" action="{!AddShotgunsToBeAcquiredList}" disabled="checkselected" reRender="pbgun"/>
+      <apex:pageMessages ></apex:pageMessages>
+     <apex:variable var="rowNumber" value="{!0}"/>
+     <apex:pageblockSection columns="1">
+     <apex:pageBlockTable var="var_gun" value="{!shotgunWrapperList}"> 
+   
+     <!--<apex:column headerValue="No." style="width:20px; text-align:center;" headerClass="centertext">-->
+     <apex:outputText value="{0}" style="text-align:center;"> 
+     <apex:param value="{!rowNumber+1}" /> 
+     </apex:outputText>
+        <!-- </apex:column> -->
+         <apex:column headerValue="Select">
+          
+            <apex:inputCheckbox value="{!var_gun.selectedgun}" />
+        </apex:column>
+     <apex:column headerValue="Calibre" >
+         <apex:outputText value="{!var_gun.shotgunHeld.Calibre__c}"/>
+     </apex:column> 
+     <apex:column headerValue="Type" >
+         <apex:outputText value="{!var_gun.shotgunHeld.Type__c}"/>
+     </apex:column> 
+          <apex:column headerValue="Make" >
+     <apex:outputText value="{!var_gun.shotgunHeld.Make__c}"/>
+     </apex:column> 
+         <apex:column headerValue="Serial No" >
+         <apex:outputText value="{!var_gun.shotgunHeld.Serial_No__c}"/>
+     </apex:column> 
+     <apex:column headerValue="Reason" >
+         <apex:outputText value="{!var_gun.shotgunHeld.Reason__c}"/>
+     </apex:column> 
+ 
+   
+ </apex:pageBlockTable>
+ 
+ </apex:pageblockSection>
+
+ </apex:pageBlock>
+ 
+        
+        
+        <br/> <br/>
+
+       
+     
+         
+      <!-- ===============================================================================SHOTGUN REQUESTED STARTS============================================================================= -->
+        <div class="line" id="pbgun">
+            <label>Do You want to aquire any Shotgun? <span class="req"></span></label>
+                <div class="inline">
+                    <div>               
+                      <apex:inputField value="{!gunreq.Do_you_want_to_acquire_any_firearm__c}"/>
+           
+                    </div>
+                                
+                </div>
+        </div>
+        <div class="line">
+       <label>(If yes, give details of all Shotguns held). </label>
+        </div>
+        </span>
+        </div>  
+            <br/>  
+ 
+     <apex:pageBlock title="Shotguns To Be Aquired" id="pbgun">
+      <apex:pageMessages ></apex:pageMessages>
+     <apex:variable var="rowNumber" value="{!0}"/>
+     <apex:pageblockSection columns="1">
+     <apex:pageBlockTable title="Shotgun Requested" id="ShotgunRequested" var="var_sg" value="{!shotgunList}"> 
+
+     <!--<apex:column headerValue="No." style="width:20px; text-align:center;" headerClass="centertext">-->
+     <apex:outputText value="{0}" style="text-align:center;"> 
+     <apex:param value="{!rowNumber+1}" /> 
+     </apex:outputText>
+        <!-- </apex:column> -->
+     <apex:column headerValue="Calibre" >
+         <apex:inputField value="{!var_sg.Calibre__c}"/>
+     </apex:column> 
+     <apex:column headerValue="Type" >
+         <apex:inputField value="{!var_sg.Type__c}"/>
+     </apex:column> 
+     <apex:column headerValue="Reason" >
+         <apex:inputField value="{!var_sg.Reason__c}"/>
+     </apex:column> 
+     
+     
+     
+    <apex:column headerValue="Action" >
+      <apex:commandButton value="Delete" action="{!deleteRowShotgun}" reRender="pbgun"> 
+     <apex:param name="rowIndexGun" value="{!rowNumber}"/>
+      </apex:commandButton>
+         <apex:variable var="rowNumber" value="{!rowNumber+1}"/>
+    </apex:column> 
+    
+ </apex:pageBlockTable>
+ <apex:commandButton action="{!addRowShotgun}" value="Add Shotgun" reRender="pbgun"/> 
+ </apex:pageblockSection>
+ <apex:pageBlockButtons >
+ <!-- <apex:commandButton value="Save" action="{!save}" /> -->
+
+ </apex:pageBlockButtons>
+ </apex:pageBlock>
+ 
+ <br/>   
+         
+         
+ 
+      <div class="line" id="p1">
+            <label><h2>Details of current (or in the case of a grant, proposed) security arrangements </h2> <span class="req">*</span></label><br/> <br/><br/> 
+                <div class="inline">
+                    <div>              
+                   <b> a)  Are the security arrangements at your home address</b><span class="req">*</span> <br/>    <apex:inputField value="{!tos1.security_arrangements__c}"/>  <br/> <br/> 
+                        If No, Please provide details   <br/>  <apex:inputField value="{!tos1.Details_of_security_arrangements__c}"/> <br/><br/> <br/>  
+                   <b> b)  Type of security <span class="req">*</span><br/> <apex:inputField value="{!tos1.Type_of_security__c}" /></b> <br/> <br/> 
+                        If Others, Please provide details   <br/>  <apex:inputField value="{!tos1.Security_Details__c}"/> <br/><br/> <br/>   
+                   <b> c)  Is the security shared with another certificate holder?</b> <br/> <apex:inputField value="{!tos1.security_shared_with_anothers__c}"/><br/> <br/>  
+                        If Yes, Please provide details   <br/>  <apex:inputField value="{!tos1.Security_shared_Details__c}"/> <br/><br/> <br/>   
+                   
+                     <br/><br/>  
+                                  
+                    </div>             
+                </div>
+        </div>
+     
+       <br/> <br/>   <br/> <br/>
+     <div> 
+     <apex:commandButton value=" Previous " action="{!PreviousButton_PartE}"/> &nbsp;&nbsp;&nbsp;&nbsp;
+   <apex:commandButton value="     Next     " action="{!NextButton_PartE}"/> 
+   
+        </div>
+             <div id="footer">      
+           </div> 
+            </div> 
+        </div>
+</div>
+
+</apex:form>
+</body>
+   </apex:define>
+        </apex:composition>
+</html>
+</apex:page>

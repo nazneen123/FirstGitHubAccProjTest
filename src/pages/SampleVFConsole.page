@@ -1,0 +1,23 @@
+<apex:page controller="PieChartController" title="Pie Chart">
+    <apex:chart height="400" width="550" data="{!pieData}">
+        <apex:pieSeries dataField="data" labelField="name"/>
+        <apex:legend position="bottom"/>
+    </apex:chart>
+</apex:page>
+
+<!--<apex:page controller="PieChartController" >
+    <apex:pageblock title="Applicants and their application status" >
+        <apex:chart height="1050" width="550" data="{!pieData}"> 
+            <apex:pieSeries tips="true" dataField="data" labelField="name"/> 
+            <apex:legend position="left"/>
+        </apex:chart>
+    </apex:pageblock>
+    <apex:pageblock title="Applicants and their application status" >
+        <apex:chart height="250" width="350" data="{!pieData}"> 
+            <apex:axis type="Category" position="left" fields="data" title="Application Status"/>    
+            <apex:axis type="Category" position="bottom" fields="name" title="Applicant"/>            
+            <apex:barSeries orientation="vertical" axis="left" xField="name" yField="data"/> 
+        </apex:chart>
+    </apex:pageblock>            
+</apex:page>
+-->

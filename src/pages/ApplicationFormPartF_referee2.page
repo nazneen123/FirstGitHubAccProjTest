@@ -1,0 +1,224 @@
+<apex:page sidebar="false" Controller="ApplicationFormController" showheader="false">
+ 
+<html>
+
+ <apex:composition template="communitytemplate">
+  <apex:define name="custompage">
+
+    <body> 
+    
+    <apex:form >
+  
+<div id="container"> 
+         
+                
+                <apex:image id="theImage1" value="{!$Resource.slcheaderimages}" width="1000" height="150"/> 
+          <!--  <span style="padding-left:70px"/>  
+              <apex:image id="theImage" value="{!$Resource.Flow}" width="900" height="100" />-->
+             
+           
+<div class="sidebar">
+</div>
+<div class="content">
+<style type="text/css">
+    #step2 , #step3
+    {
+        display:none;
+    }
+    .content requireddiv
+    {
+    font-size:80% !important; padding: 0,0,0,0;
+    
+    }
+    
+     </style>  
+<div class="requireddiv ">     
+ <apex:pageMessages id="msgs"></apex:pageMessages>  </div>
+
+    <div class="title">
+                       <h2>APPLICATION FOR THE GRANT OR RENEWAL OF A FIREARM AND/OR
+SHOTGUN CERTIFICATE</h2>
+    </div>
+    <div id="formContent">
+        <div class="info">
+            <div>Part F : Referee Details</div>
+            <div>A second referee is ONLY required for a firearm certificate.</div>
+            <div>Please give details of a suitable person who has agreed to act as a referee for you.</div>
+        </div> 
+        <span id="spacespan"></span>
+        <div id="step1">
+        <span id="step1id">
+
+        <div class="line" id="p1">
+            <label>Title<span class="req"></span></label>
+                <div class="inline">
+                    <div>               
+                    <apex:inputField value="{!ref1.Title__c}"/>            
+                <br/>                  
+                    </div>             
+                </div>
+        </div>
+        
+        <div class="line" id="p1">
+            <label>Surname<span class="req">*</span></label>
+                <div class="inline">
+                    <div>              
+                    <apex:inputText value="{!ref1.Surname__c}" required="true"/>             
+                <br/>                  
+                    </div>             
+                </div>
+        </div> 
+        
+        <div class="line" id="p1">
+            <label>Forename(s)<span class="req">*</span></label>
+                <div class="inline">
+                    <div>              
+                    <apex:inputText value="{!ref1.Forenames_state_all__c}" required="true"/>             
+                <br/>                  
+                    </div>             
+                </div>
+        </div> 
+        
+         <div class="line" id="p1">
+            <label>Date of Birth<span class="req">*</span></label>
+                <div class="inline">
+                    <div>              
+                    <apex:inputField value="{!ref1.Date_of_birth__c}" required="true"/>             
+                <br/>                  
+                    </div>             
+                </div>
+        </div>  
+          
+         <div class="line" id="p1">
+            <label>Place of Birth<span class="req"></span></label>
+                <div class="inline">
+                    <div>              
+                    <apex:inputField value="{!ref1.Place_of_Birth__c}"/>             
+                <br/>                  
+                    </div>             
+                </div>
+        </div>  
+
+          
+          <div class="line" id="p1">
+            <label>Occupation<span class="req"></span></label>
+                <div class="inline">
+                    <div>              
+                    <apex:inputField value="{!ref1.Occupation__c}"/>             
+                <br/>                  
+                    </div>             
+                </div>
+        </div>
+          
+          <div class="line" id="p1">
+            <label>Home Address<span class="req"></span></label>
+                <div class="inline">
+                    <div>              
+                    <apex:inputField value="{!ref1.Home_address__c}"/>             
+                <br/>                  
+                    </div>             
+                </div>
+        </div>
+           
+           <div class="line" id="p1">
+            <label>Post Code<span class="req"></span></label>
+                <div class="inline">
+                    <div>              
+                    <apex:inputField value="{!ref1.Postcode__c}"/>             
+                <br/>                  
+                    </div>             
+                </div>
+        </div>
+         
+         <div class="line" id="p1">
+            <label>Home telephone number<span class="req"></span></label>
+                <div class="inline">
+                    <div>              
+                    <apex:inputField value="{!ref1.Tel_number__c}"/>             
+                <br/>                  
+                    </div>             
+                </div>
+        </div>
+        
+         <div class="line" id="p1">
+            <label>Work telephone number<span class="req"></span></label>
+                <div class="inline">
+                    <div>              
+                    <apex:inputField value="{!ref1.Work_Tel_number__c}"/>             
+                <br/>                  
+                    </div>             
+                </div>
+        </div>
+         
+         <div class="line" id="p1">
+            <label>Mobile number<span class="req">*</span></label>
+                <div class="inline">
+                    <div>              
+                    <apex:inputField value="{!ref1.Mobile_number__c}" required="true"/>             
+                <br/>                  
+                    </div>             
+                </div>
+        </div>
+           
+         <div class="line" id="p1">
+            <label>Home Email<span class="req"></span></label>
+                <div class="inline">
+                    <div>              
+                    <apex:inputField value="{!ref1.Home_Email__c}"/>             
+                <br/>                  
+                    </div>             
+                </div>
+        </div>  
+        
+         <div class="line" id="p1">
+            <label>Work Email<span class="req"></span></label>
+                <div class="inline">
+                    <div>              
+                    <apex:inputText value="{!ref1.Work_Email__c}"/>             
+                <br/>                  
+                    </div>             
+                </div>
+        </div>
+         
+         <div class="line" id="p1">
+            <label>In what capacity do you know the referee?<span class="req">*</span></label>
+                <div class="inline">
+                    <div>              
+                    <apex:inputText value="{!ref1.In_what_capacity_do_you_know_the_referee__c}" required="true"/>             
+                <br/>                  
+                    </div>             
+                </div>
+        </div>
+         
+         <div class="line" id="p1">
+            <label>How long has the referee known you?<span class="req">*</span></label>
+                <div class="inline">
+                    <div>              
+                    <apex:inputText value="{!ref1.How_long_has_the_referee_known_you__c}" required="true"/>             
+                <br/>                  
+                    </div>             
+                </div>
+        </div>
+           
+     <div> 
+   <apex:commandButton value=" Previous " action="{!PreviousButton_PartF_Refree2}"/>  &nbsp;&nbsp;&nbsp;&nbsp; 
+   <apex:commandButton value="     Next     " action="{!NextButton_PartF_Refree2}"/> 
+   
+   
+        </div>
+        </span>
+        </div> 
+               
+<div id="footer"> 
+                   
+           </div> 
+            </div> 
+        </div>
+</div>
+
+</apex:form>
+</body>
+</apex:define>
+ </apex:composition>
+</html>
+</apex:page>

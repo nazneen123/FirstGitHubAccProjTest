@@ -1,0 +1,131 @@
+<apex:page sidebar="false" extensions="tstpopup" Controller="ApplicationFormController" showheader="false">
+<html>
+<apex:composition template="communitytemplate">
+  <apex:define name="custompage">
+
+<head>
+        <style>
+            .date
+            {margin:right;}
+        </style>
+        <apex:stylesheet value="{!$Resource.new}"/>
+    </head>
+    
+
+
+    <body> 
+    <apex:form >
+        <div id="container"> 
+                <apex:image id="theImage1" value="{!$Resource.slcheaderimages}" width="1000" height="150"/> 
+          <!--  <span style="padding-left:70px"/>  
+              <apex:image id="theImage" value="{!$Resource.Flow}" width="900" height="100" />-->
+        <div class="sidebar">
+        </div>
+            <div class="content">
+        <style type="text/css">
+            #step2 , #step3
+        {
+            display:none;
+        }
+        .content requireddiv
+        {
+            font-size:80% !important; padding: 0,0,0,0;
+        }
+     </style>  
+        <div class="requireddiv ">     
+         <apex:pageMessages id="msgs"></apex:pageMessages>  </div>
+
+    <div class="title">
+                       <h2>APPLICATION FOR THE GRANT OR RENEWAL OF A FIREARM AND/OR SHOTGUN CERTIFICATE</h2>
+    </div>
+    <div id="formContent">
+        
+ 
+     
+        <div class="title">
+                <h2>DECLARATION</h2>
+        </div>       
+                
+           <div class="line" id="p1">
+            <label><h2>I hereby apply for a </h2><span class="req">*</span></label>
+                <div>
+                    <div>  <br/>            
+                  <b><apex:inputField value="{!app.Firearm_certificate__c}"/> Firearm certificate  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <apex:inputField value="{!app.Shotgun_certificate__c}"/> Shotgun certificate</b>
+                                
+                <br/>                  
+                    </div>             
+                </div>
+        </div>
+        <br/><br/>
+        <div><pre>
+   <apex:inputField value="{!app.Declaration__c}"/>    The information I have provided on this form is true and I understand that it is an offence under section 28A(7) of the
+     Firearms Act to knowingly or recklessly make a false statement for the purpose of procuring the grant or renewal of a certificate;
+     the maximum penalty for which is six months’ imprisonment and/or a fine. 
+     I understand that I will be subject to a check of police records and that my details will be held electronically.
+ </pre>
+ </div>    
+
+
+    <div class="inline">
+                 <div>              
+                   Signature: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                   <!--<apex:commandButton value="CLICK for Signature" 
+                   action="{!goToSignaturePage}" onclick="popupwindow"/>  -->
+                   <apex:commandButton value="CLICK for Signature" action="{!showPopup}" rerender="tstpopup"/>
+                    <br/> <br/>
+                     <apex:outputPanel id="tstpopup">
+        <apex:outputPanel styleClass="popupBackground" layout="block" rendered="{!displayPopUp}"/>
+            <apex:outputPanel styleClass="custPopup" layout="block" rendered="{!displayPopUp}">
+                                <apex:commandButton value="Hide Pop up" action="{!closePopup}" rerender="tstpopup"/>
+            </apex:outputPanel>
+        </apex:outputPanel> 
+                   Print name:  <br/>  <br/> 
+                   Date: <br/>  <br/> 
+                   I have enclosed FOUR identical photographs of a current likeness of me, the applicant.
+                 
+                     <br/><br/>  
+                                  
+                    </div>  
+     </div>     
+     <div class="title">       
+        </div> 
+    
+    
+    
+     <div class="line" id="p1">
+            <label><h2>If the applicant is under 18 years of age the following must be completed </h2> <span class="req">*</span></label>
+                <div class="inline">
+                    <div>               
+                       <apex:inputField value="{!app.Parent_Guardian__c}"/> 
+                </div>
+                </div>
+        </div>
+      <div class="inline">
+                 <div>              
+                   Signature:     <br/> <br/> 
+                   Print name:  <br/>  <br/> 
+                   Date: <br/>  <br/> 
+                   
+                                  
+                   </div>  
+      </div>     
+   
+       <br/> <br/>   <br/> <br/>
+     <div> 
+     <apex:commandButton value="Previous" action="{!PreviousButton_Declaration}"/> 
+   <apex:commandButton value="Next" action="{!NextButton_Declaration}"/> 
+   
+        </div>
+             <div id="footer">      
+           </div> 
+            </div> 
+        </div>
+</div>
+
+</apex:form>
+</body>
+</apex:define>
+ </apex:composition>
+</html>
+</apex:page>

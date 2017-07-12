@@ -1,0 +1,105 @@
+<apex:page standardController="Arms_Held__c" extensions="MyCertificateHandler" sidebar="false" showheader="false" >
+    <html>
+        <apex:composition template="communitytemplate">
+            <apex:define name="custompage">
+                <body> 
+                    <apex:form >
+                        <div id="container">                          
+                            <apex:image id="theImage1" value="{!$Resource.slcheaderimages}" width="1000" height="150"/>                            
+                            <div class="sidebar"></div>
+                            <div class="content">
+                                <style type="text/css">
+                                #step2 , #step3
+                                {
+                                    display:none;
+                                }
+                                .content requireddiv
+                                {
+                                    font-size:80% !important; padding: 0,0,0,0;    
+                                }
+                                </style>  
+                                <div class="requireddiv ">     
+                                    <apex:pageMessages id="msgs"></apex:pageMessages>  
+                                </div>
+                                <div class="title">
+                                    <h2>NEW ARM HELD</h2>
+                                </div>
+                                <div id="formContent">
+                                    <span id="spacespan"></span>
+                                    <div id="step1">
+                                        <span id="step1id">
+                                            <!----------------------------------------Content Start----------------------------------------------------------->
+                                            <div class="line" id="p1">            
+                                                <label>Name<span class="req">*</span></label>                
+                                                <div class="inline">                    
+                                                    <div><apex:inputField value="{!Arms_Held__c.Name}"/><br/></div>                             
+                                                </div>        
+                                            </div>
+          
+                                            <div class="line" id="p1">            
+                                                <label>Type</label>                
+                                                <div class="inline">                    
+                                                    <apex:inputField value="{!Arms_Held__c.Type__c}" />                                           
+                                                </div>        
+                                            </div>
+                                            <div class="line" id="p1">            
+                                                <label>Calibre</label>                
+                                                <div class="inline">                    
+                                                    <apex:inputField value="{!Arms_Held__c.Calibre__c}" />                   
+                                                </div>        
+                                            </div>
+                                            <div class="line" id="p1">            
+                                                <label>Type Action</label>                
+                                                <div class="inline">                    
+                                                    <apex:inputField value="{!Arms_Held__c.Type_Action__c}" />                   
+                                                </div>        
+                                            </div>
+                                            <div class="line" id="p1">            
+                                                <label>Make</label>                
+                                                <div class="inline">                    
+                                                    <apex:inputField value="{!Arms_Held__c.Make__c}" />                   
+                                                </div>        
+                                            </div>
+                                            <div class="line" id="p1">            
+                                                <label>Serial Number</label>                
+                                                <div class="inline">                    
+                                                    <apex:inputField value="{!Arms_Held__c.Serial_No__c}" />                   
+                                                </div>        
+                                            </div>     
+                                            <div class="line" id="p1">            
+                                                <label>Reason</label>                
+                                                <div class="inline">                    
+                                                    <apex:inputField value="{!Arms_Held__c.Reason__c}" />            
+                                                </div>        
+                                            </div>  
+                                            
+                                            <div class="line" id="p1">            
+                                                <label>Do You Hold Any Firearm?</label>                
+                                                <div class="inline">                    
+                                                    <apex:inputField value="{!Arms_Held__c.Do_You_Hold_Any_Firearm__c}" />            
+                                                </div>        
+                                            </div>                                              
+                                            
+                                            <div class="line" id="p1">                                                                            
+                                                <label>Arm Renewal</label> &nbsp;   &nbsp; &nbsp;
+                                                    <apex:inputField value="{!Arms_Held__c.Arms_Renewal__c}" />                                                                    
+                                            </div>                                            
+                                            
+                                            <br/><br/><br/>
+                                            <div align="center" >                 
+                                                    <apex:commandButton value="  Save  " action="{!addNewArm}"  /> &nbsp; &nbsp;                                                         
+                                                    <apex:commandButton value=" Cancel " action="{!cancel}" />
+                                              </div>                                           
+                                            <!----------------------------------------Content end----------------------------------------------------------->
+                                        </span>
+                                    </div>                                        
+                                    <div id="footer"></div> 
+                                </div>         
+                            </div>
+                        </div>
+                    </apex:form>
+                </body>
+            </apex:define>
+        </apex:composition>
+    </html>
+</apex:page>

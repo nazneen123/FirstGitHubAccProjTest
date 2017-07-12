@@ -1,0 +1,20 @@
+<apex:page controller="crit.ScheduleController" action="{!checkScheduledJobs}">
+    <div width="100%">
+        <apex:pageBlock title="Schedule Critical Impact Job">
+            <apex:pageBlockSection >
+                
+                <apex:form >
+                    <div align="center">
+                        Use this button to schedule the Critical Impact data import job. The job will run every half hour and will automatically reschedule itself.
+                        <br/><br/>
+                        *Please only click once to avoid scheduling duplicates.
+                        <br/><br/>
+                        <apex:commandButton id="scheduleButton" value="{!buttonText}" action="{!scheduleJobs}" status="scheduleStatus" disabled="{!clicked}" rerender="scheduleButton"/>
+                        <apex:actionStatus startText=" Scheduling..."
+                        stopText="" id="scheduleStatus"/>
+                    </div>
+                </apex:form>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </div>
+</apex:page>

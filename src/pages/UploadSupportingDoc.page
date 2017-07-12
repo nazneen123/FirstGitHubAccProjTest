@@ -1,0 +1,125 @@
+<apex:page sidebar="false" controller="UploadSuppDocController"  showheader="false" >
+<html>
+
+
+<head>
+        <style>
+            .date
+            {margin:right;}
+        </style>
+        <apex:stylesheet value="{!$Resource.new}"/>
+    </head>
+      <apex:composition template="communitytemplate">
+  <apex:define name="custompage">
+    <body> 
+    <apex:form >
+        <div id="container"> 
+                <apex:image id="theImage1" value="{!$Resource.slcheaderimages}" width="1000" height="150"/> 
+          <!--  <span style="padding-left:70px"/>  
+              <apex:image id="theImage" value="{!$Resource.Flow}" width="900" height="100" />-->
+        <div class="sidebar">
+        </div>
+            <div class="content">
+        <style type="text/css">
+            #step2 , #step3
+        {
+            display:none;
+        }
+        .content requireddiv
+        {
+            font-size:80% !important; padding: 0,0,0,0;
+        }
+     </style>  
+        <div class="requireddiv ">     
+         <apex:pageMessages id="msgs"></apex:pageMessages>  </div>
+
+    <div class="title">
+                       <h2>Upload Supporting Documents</h2>
+    </div>
+    <div id="formContent">
+        <div class="info">
+            <div><h2></h2><br/>
+            </div>
+        </div> 
+        
+        
+        
+                <span id="spacespan"></span>
+        <div id="step1">
+        <span id="step1id">
+
+        </span>
+        </div> 
+            <br/>  
+       
+ 
+ <apex:pageBlock title="Upload Documents" id="pb">
+ <apex:pageMessages />
+ <apex:variable var="rowNum" value="{!0}"/>
+ <apex:pageblockSection columns="1">
+ <apex:pageBlockTable title="Documents" var="var_upload" value="{!uploadDocumentWrapperList}"> 
+
+ <!--<apex:column headerValue="No." style="width:20px; text-align:center;" headerClass="centertext">-->
+ <apex:outputText value="{0}" style="text-align:center;"> 
+ <apex:param value="{!rowNum+1}" /> 
+ </apex:outputText>
+<!-- </apex:column> -->
+ <apex:column headerValue="Category" >
+ <apex:inputField value="{!var_upload.document.Category__c}"/>
+ </apex:column> 
+ <apex:column headerValue="Description" >
+ <apex:inputField value="{!var_upload.document.Description__c}"/>
+ </apex:column> 
+ 
+  <apex:column headerValue="Action" >
+<apex:outputLabel value=""></apex:outputLabel>
+                 <apex:outputPanel >
+                 
+                     <apex:inputfile value="{!var_upload.attach.body}" fileName="{!var_upload.attach.name}"> </apex:inputfile>
+                     
+                       <!--  <apex:commandButton value="Upload" action="{!uploadFile}" /> -->
+                 </apex:outputPanel>
+  <!--<apex:inputFile value="{!document.body}" filename="{!document.name}"/> <apex:commandButton value="Upload" action="{!save}"/>-->
+  <!--<apex:inputFile value="{!document.body}" filename="{!document.name}" id="file"/>-->
+             
+         <apex:variable var="rowNum" value="{!rowNum+1}"/>
+    </apex:column> 
+ </apex:pageBlockTable>
+ <apex:commandButton action="{!addFile}" value="Add File" />
+ </apex:pageblockSection>
+ <apex:pageBlockButtons >
+ 
+
+ </apex:pageBlockButtons>
+ 
+ 
+   
+ </apex:pageBlock>
+        
+        <!-------------------------------------------------------------------------------------------------------->
+        
+        <!-------------------------------------------------------------------------------------------------------->
+       
+        
+
+     
+       <br/> <br/>   <br/> <br/>      <br/><br/>
+      
+     <div> 
+      
+     <apex:commandButton value="Save " action="{!uploadFile}" />
+    
+   
+        </div>
+             <div id="footer">      
+           </div> 
+            </div> 
+        </div>
+</div>
+
+</apex:form>
+</body>
+   </apex:define>
+        </apex:composition>
+</html>
+</apex:page>

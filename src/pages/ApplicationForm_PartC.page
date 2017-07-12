@@ -1,0 +1,116 @@
+<apex:page sidebar="false" controller="ApplicationFormController" showheader="false">
+
+<html>
+<apex:composition template="communitytemplate">
+  <apex:define name="custompage">
+    <body> 
+    
+    <apex:form >
+    
+    
+   
+        <div id="container"> 
+         
+                
+                <apex:image id="theImage1" value="{!$Resource.slcheaderimages}" width="1000" height="150"/> 
+          <!--  <span style="padding-left:70px"/>  
+              <apex:image id="theImage" value="{!$Resource.Flow}" width="900" height="100" />-->
+             
+           
+        <div class="sidebar">
+        </div>
+            <div class="content">
+        <style type="text/css">
+            #step2 , #step3
+        {
+            display:none;
+        }
+        .content requireddiv
+        {
+            font-size:80% !important; padding: 0,0,0,0;
+        }
+    
+     </style>  
+        <div class="requireddiv ">     
+     <!--    <apex:pageMessages id="msgs"></apex:pageMessages> -->
+ </div> 
+    <div class="title">
+                       <h2>APPLICATION FOR THE GRANT OR RENEWAL OF A FIREARM AND/OR SHOTGUN CERTIFICATE</h2>
+    </div>
+    <div id="formContent">
+        <div class="info">
+            <div><h2>PART C: Offences </h2><br/>
+            </div>
+        </div> 
+        <span id="spacespan"></span>
+        <div id="step1">
+        <span id="step1id">
+
+        <div class="line" id="p1">
+            <label>Have you been convicted of any offence (not including parking) or received a written caution? <span class="req">*</span></label>
+                <div class="inline">
+                    <div>               
+                       <apex:inputField value="{!app.convicted_of_any_offence__c}" required="true"/> 
+           
+                    </div>
+                                
+                </div>
+        </div>
+        <div class="line">
+       <label>(If yes, give details of all convictions and/or formal written cautions, binding overs and spent convictions, including those received outside Great Britain). </label>
+        </div>
+        </span>
+        </div> 
+            <br/>  
+       
+ 
+ <apex:pageBlock title="Offence Details" id="pb">
+ <apex:pageMessages />
+ <apex:variable var="rowNumber" value="{!0}"/>
+ <apex:pageblockSection columns="1">
+ <apex:pageBlockTable title="Offences" var="var_off" value="{!offenceList}"> 
+
+ <!--<apex:column headerValue="No." style="width:20px; text-align:center;" headerClass="centertext">-->
+ <apex:outputText value="{0}" style="text-align:center;"> 
+ <apex:param value="{!rowNumber+1}" /> 
+ </apex:outputText>
+<!-- </apex:column> -->
+ <apex:column headerValue="Date" >
+ <apex:inputField value="{!var_off.Date__c}"/>
+ </apex:column> 
+ <apex:column headerValue="Offence" >
+ <apex:inputField value="{!var_off.Name}"/>
+ </apex:column> 
+ 
+  <apex:column headerValue="Action" >
+     <apex:commandButton value="Delete" action="{!deleteRow}" reRender="pb">
+     <apex:param name="rowIndex" value="{!rowNumber}"/>
+     </apex:commandButton>
+         <apex:variable var="rowNumber" value="{!rowNumber+1}"/>
+    </apex:column> 
+ </apex:pageBlockTable>
+ <apex:commandButton action="{!addRow}" value="Add Offence" reRender="pb"/>
+ </apex:pageblockSection>
+ <apex:pageBlockButtons >
+ <!-- <apex:commandButton value="Save" action="{!save}" /> -->
+
+ </apex:pageBlockButtons>
+ </apex:pageBlock>
+       <br/> <br/>   <br/> <br/>
+     <div> 
+   <apex:commandButton value=" Previous " action="{!PreviousButton_PartC}"/> &nbsp;&nbsp;&nbsp;&nbsp;
+   <apex:commandButton value="     Next     " action="{!NextButton_PartC}"/> 
+   
+        </div>
+             <div id="footer">      
+           </div> 
+            </div> 
+        </div>
+</div>
+
+</apex:form>
+</body>
+</apex:define>
+ </apex:composition>
+</html>
+</apex:page>

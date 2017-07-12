@@ -1,0 +1,116 @@
+<apex:page sidebar="false" Controller="ApplicationFormController" showheader="false" cache="true">
+ 
+<html>
+<apex:composition template="communitytemplate">
+  <apex:define name="custompage">
+    <body> 
+    
+    <apex:form >
+    <script>
+    function changeLicenseType()
+    {
+        changeInLicenseType();
+    }
+    </script>
+    
+   
+<div id="container"> 
+         
+                
+                <apex:image id="theImage1" value="{!$Resource.slcheaderimages}" width="212" height="168"/> 
+          <!--  <span style="padding-left:70px"/>  
+              <apex:image id="theImage" value="{!$Resource.Flow}" width="900" height="100" />-->
+             
+           
+<div class="sidebar">
+</div>
+<div class="content">
+<style type="text/css">
+    
+    
+    #step2 , #step3
+    {
+        display:none;
+    }
+    .content requireddiv
+    {
+    font-size:80% !important; padding: 0,0,0,0;
+    
+    }
+    
+     </style>  
+<div class="requireddiv ">     
+ <apex:pageMessages id="msgs"></apex:pageMessages>  </div>
+<apex:actionFunction action="{!changeInLicenseType}" name="changeInLicenseType"></apex:actionFunction>
+
+    <div class="title">
+                       <h2>APPLICATION FOR THE GRANT OR RENEWAL OF A FIREARM AND/OR
+SHOTGUN CERTIFICATE</h2>
+    </div>
+    <div id="formContent">
+     
+        <span id="spacespan"></span>
+        <div id="step1">
+        <span id="step1id">
+        
+           <div class="line" id="p1">
+            <label>License Type<span class="req">*</span></label> 
+                <div class="inline">
+                    <div>               
+                    <apex:inputfield value="{!app.License_Type__c}" onchange="changeLicenseType();" required="true"/>           
+                <br/>                  
+                    </div>             
+                </div>
+        </div> 
+      
+        <div class="line" id="p2">
+            <!--<label>Firearm<span class="req">*</span></label> -->
+            <apex:outputText value="Firearm" rendered="{!renderFirearm}"></apex:outputText>
+                <div class="inline">
+                    <div>               
+                    <!--<apex:inputField id="Firearm" value="{!app.Firearm__c}" rendered="{!renderFirearm}"/>-->
+                    <!--veera modifications-->
+                    <apex:selectList value="{!app.Firearm__c}" size="0" rendered="{!renderFirearm}">
+                    <apex:selectOptions value="{!Firearm}"/>
+                    </apex:selectList>
+                <br/>                  
+                    </div>             
+                </div>
+        </div>
+        
+        <div class="line" id="p3">
+           <!-- <label>Shotgun<span class="req">*</span></label> -->
+           <apex:outputText value="Shotgun" rendered="{!renderShotgun}" ></apex:outputText>
+                <div class="inline">
+                    <div>               
+                    <!--<apex:inputField id="Shotgun" value="{!app.Shotgun__c}" rendered="{!renderShotgun}"/>--> 
+                    <apex:selectList value="{!app.Shotgun__c}" size="0" rendered="{!renderShotgun}">
+                    <apex:selectOptions value="{!Firearm}"/>
+                    </apex:selectList>           
+                <br/>                  
+                    </div>             
+                </div>
+        </div>
+        
+        
+     <div> 
+     <apex:commandButton value="    Next    " action="{!RedirectToPage1}"/>
+  
+   
+        </div>
+        </span>
+        </div> 
+               
+<div id="footer"> 
+                   
+           </div> 
+            </div> 
+        </div>
+</div>
+
+</apex:form>
+</body>
+</apex:define>
+ </apex:composition>
+</html>
+</apex:page>

@@ -1,0 +1,109 @@
+<apex:page controller="MyCertificateHandler"  showheader="false" >
+    <html>
+        <apex:composition template="communitytemplate">
+            <apex:define name="custompage">
+                <body>  
+                    <apex:form >
+                        <div id="container">                          
+                            <apex:image id="theImage1" value="{!$Resource.slcheaderimages}" width="1000" height="150"/>                            
+                            <div class="sidebar"></div>
+                            <div class="content">
+                                <style type="text/css">
+                                #step2 , #step3
+                                {
+                                    display:none;
+                                }
+                                .content requireddiv
+                                {
+                                    font-size:80% !important; padding: 0,0,0,0;    
+                                }
+                                </style>
+                                <div class="requireddiv ">     
+                                    <apex:pageMessages id="msgs"></apex:pageMessages>  
+                                </div>
+                                <div class="title">
+                                    
+                                </div>
+                                <div id="formContent">
+                                    <span id="spacespan"></span>
+                                    <div id="step1">
+                                        <span id="step1id">                                            
+                                            <!----------------------------------------Content Start----------------------------------------------------------->
+                                            
+                                                <table cellspacing="25"><caption align="Left"><b>Application Details</b></caption>
+                                                    <tr>
+                                                        <td>Name :</td><td>{!objWrap.app.Name}</td> 
+                                                    </tr> 
+                                                    <tr>
+                                                     <td>Shotgun :</td> <td> {!objWrap.app.Shotgun__c}</td>
+                                                    </tr> 
+                                                    <tr>
+                                                       <td> GP Name :</td>  <td>{!objWrap.app.GP_Name__c}</td>
+                                                    </tr> 
+                                                    <tr>
+                                                    <td>GP Address :    </td><td> {!objWrap.app.GP_Address__c}</td>
+                                                    </tr> 
+                                                    <tr>
+                                                        <td>GP Postcode :</td><td>{!objWrap.app.GP_Postcode__c}</td>
+                                                    </tr> 
+                                                    <tr>
+                                                        <td>Application Status :</td><td>{!objWrap.app.Application_Status__c}</td>
+                                                   </tr> 
+                                                   <tr>
+                                                   <td> GP E‐mail : </td><td>{!objWrap.app.GPE_mail__c}</td>
+                                                   </tr> 
+                                                   <tr>
+                                                   <td> License Type :</td> <td>{!objWrap.app.License_Type__c}</td>
+                                                   </tr>                                              
+                                                   <tr>
+                                                    <td>Applicant name  :</td><td>{!objWrap.app.Applicant_name__c}</td>
+                                                   </tr>                                                    
+                                                   <tr>
+                                                  <td>  Applicant : </td>   <td> {!objWrap.app.Applicant__c}</td>
+                                                   </tr>    
+                                                    
+                                                </table>
+                                            <hr/>
+                                            <!--<table cellspacing="25"  >-->
+                                            
+                                            <table cellspacing="25"><caption align="Left"><b>Certificate Details</b></caption>
+                                                    
+                                                    <tr>
+                                                        <td>Name :</td><td>{!objWrap.crt.Name}</td> 
+                                                    </tr> 
+                                                    <tr>
+                                                     <td>Type :</td> <td>{!objWrap.crt.Type__c}</td>
+                                                    </tr> 
+                                                    <tr>
+                                                       <td> Date of Issue :</td>  <td>{!objWrap.crt.Date_of_Issue__c}</td>
+                                                    </tr> 
+                                                    <tr>
+                                                    <td>Date of Expiry :    </td><td> {!objWrap.crt.Date_of_Expiry__c}</td>
+                                                        </tr>
+                                            </table>
+                                            <hr/>
+                                            <table cellspacing="25" >                                                                                            
+                                                  <tr>
+                                                        <td>Name :</td><td>{!objWrap.con.Name}</td> 
+                                                    </tr> 
+                                                    <tr>
+                                                     <td>Email Id :</td> <td>{!objWrap.con.Email}</td>
+                                                    </tr>                                                                                                 
+                                            </table>
+                                          
+                                            
+                                            
+                                            
+                                            <!----------------------------------------Content end----------------------------------------------------------->
+                                        </span>
+                                    </div>                                        
+                                    <div id="footer"></div> 
+                                </div>         
+                            </div>
+                        </div>
+                    </apex:form>
+                </body>
+            </apex:define>
+        </apex:composition>
+    </html>
+</apex:page>

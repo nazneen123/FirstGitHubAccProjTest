@@ -1,0 +1,7 @@
+<apex:page >
+  <!-- Begin Default Content REMOVE THIS -->
+  <apex:form >
+  <apex:commandButton value="CLICK for Signature" action="/apex/OrderSignaturePage?ID=a002800000PLftxAAD"/>  
+  </apex:form>
+  <!-- End Default Content REMOVE THIS -->
+</apex:page>

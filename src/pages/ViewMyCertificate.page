@@ -1,0 +1,88 @@
+<apex:page standardController="Certificate__c" extensions="MyCertificateHandler" sidebar="false" showheader="false">
+    <html>
+        <apex:composition template="communitytemplate">
+            <apex:define name="custompage">
+                <body> 
+                    <apex:form >
+                        <div id="container">                          
+                            <apex:image id="theImage1" value="{!$Resource.slcheaderimages}" width="1000" height="150"/>                            
+                            <div class="sidebar"></div>
+                            <div class="content">
+                                <style type="text/css">                                                                     
+                                    
+                                  #step2 , #step3
+                                {
+                                    display:none;
+                                }
+                                .content requireddiv
+                                {
+                                    font-size:80% !important; padding: 0,0,0,0;    
+                                }
+                                    .ul{text-decoration:none}
+                                </style>  
+                                <div class="requireddiv ">     
+                                    <apex:pageMessages id="msgs"></apex:pageMessages>  
+                                </div>
+                                <div class="title">
+                                    <h2 >CERTIFICATE DETAIL</h2>
+                                </div>
+                                <div id="formContent">
+                                    <span id="spacespan"></span>
+                                    <div id="step1" align='center' >
+                                        <span id="step1id">
+                                            <!----------------------------------------Content Start----------------------------------------------------------->
+                                           <div>                                                                                                                                                                                                                                                                                            
+                                                  <apex:commandButton value="Print" onClick="window.open('/box/printmycertificate?cert_id={!Certificate__c}');" />                                                  
+                                                  <apex:commandButton value="View"  onClick="window.open('/box/viewmycertificatedetails?cert_id={!Certificate__c}');" />                                                 
+                                            </div>                                                                                                                                                                 
+                                            <br/>
+                                            <table align='Left' cellspacing="20" >
+                                                <tr>
+                                                    <td>Name:</td><td><apex:outputField value="{!Certificate__c.Name}"/></td>                                                    
+                                                </tr>
+                                                <tr>
+                                                    <td>Application:</td><td> <apex:outputField value="{!Certificate__c.Application__r.Name}"  /></td>                                                    
+                                                </tr>                                                                                            
+                                                
+                                                 <tr>
+                                                    <td>Type:</td><td><apex:outputField value="{!Certificate__c.Type__c}"/></td>                                                    
+                                                </tr>
+                                                 <tr>
+                                                    <td>Date of Issue:</td><td><apex:outputField value="{!Certificate__c.Date_of_Issue__c}"/></td>                                                    
+                                                </tr>
+                                                 <tr>
+                                                    <td>Date of Expiry:</td><td><apex:outputField value="{!Certificate__c.Date_of_Expiry__c}"/></td>                                                    
+                                                </tr>
+                                            </table><br/><br/><br/><br/>
+                                             
+                                            <apex:pageBlock >
+                                                    <apex:pageBlockTable value="{!Certificate__c.Arms_Held__r }" var="armheld" >                        
+                                                        <apex:column ><apex:commandLink action="{!editHarm}" >Edit                          
+                                                            <apex:param name="armid" value="{!armheld.id}" assignTo="{!armid}"   />                        
+                                                            </apex:commandLink></apex:column>                       
+                                                        <apex:column value="{!armheld.Name}" />                     
+                                                        <apex:column value="{!armheld.Calibre__c}" />                                        
+                                                        <apex:column value="{!armheld.Serial_No__c}" />                                         
+                                                    </apex:pageBlockTable>                  
+                                            </apex:pageBlock>
+                                                                                         
+                                                       
+                                           <div>
+                                                                  
+                                                    <apex:commandButton value="Add New Arm" action="/apex/AddNewArmHeld?certId={!Certificate__c}" />                                                                                                                                                     
+                                              
+                                            </div>
+ 
+                                        </span>
+                                    </div>    
+                                    <!----------------------------------------Content end----------------------------------------------------------->
+                                    <div id="footer"></div> 
+                                </div>         
+                            </div>
+                        </div>
+                    </apex:form>
+                </body>
+            </apex:define>
+        </apex:composition>
+    </html>
+</apex:page>

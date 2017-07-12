@@ -1,0 +1,324 @@
+<apex:page sidebar="false" controller="ApplicationFormController"  showheader="false">
+ 
+<html>
+
+ <apex:composition template="communitytemplate">
+  <apex:define name="custompage">
+
+
+
+   
+    <body> 
+    
+    <apex:form >
+    
+        
+    <script>
+    function allowPreviousAddress()
+    {
+        callPreviousAddress();
+    }
+    </script>
+   
+<div id="container"> 
+         
+                <div>
+                <apex:image id="theImage1" value="{!$Resource.slcheaderimages}" width="1000" height="150"/> 
+          <!--  <span style="padding-left:70px"/>  
+              <apex:image id="theImage" value="{!$Resource.Flow}" width="900" height="100" />-->
+             </div>
+           
+<!--<div class="sidebar">
+</div>-->
+<div class="content">
+
+<style type="text/css">
+    #step2 , #step3
+    {
+        display:none;
+    }
+    .content requireddiv
+    {
+    font-size:80% !important; padding: 0,0,0,0;
+    
+    }
+    
+     </style>  
+<div class="requireddiv ">     
+ <apex:pageMessages id="msgs"></apex:pageMessages>  </div>
+<apex:actionFunction action="{!callPreviousAddress}" name="callPreviousAddress"></apex:actionFunction>
+    <div class="title">
+                       <h2>APPLICATION FOR THE GRANT OR RENEWAL OF A FIREARM AND/OR
+SHOTGUN CERTIFICATE</h2>
+    </div>
+    <div id="formContent">
+        <div class="info">
+            <div>Part A : Personal Details</div>
+        </div> 
+        <span id="spacespan"></span>
+        <div id="step1">
+        <span id="step1id">
+
+        <div class="line" id="p1">
+            <label>Gender<span class="req">*</span></label>
+                <div class="inline">
+                    <div>               
+                    <apex:inputField value="{!con.Gender__c}" required="true"/>            
+                <br/>                  
+                    </div>             
+                </div>
+        </div>
+        
+        <div class="line" id="p1">
+            <label>Title<span class="req"></span></label>
+                <div class="inline">
+                    <div>              
+                    <apex:inputField value="{!con.Title}"/>             
+                <br/>                  
+                    </div>             
+                </div>
+        </div>
+        
+        <div class="line" id="p1">
+            <label>Surname <span class="req">*</span></label>
+                <div class="inline">
+                    <div>              
+                    <apex:inputField value="{!con.LastName}"/>             
+                <br/>                  
+                    </div>             
+                </div>
+        </div>
+        
+        <div class="line" id="p1">
+            <label>Previous surname(s)<span class="req"></span></label>
+                <div class="inline">
+                    <div>              
+                    <apex:inputField value="{!con.Previous_surname_s__c}"/>             
+                <br/>                  
+                    </div>             
+                </div>
+        </div>
+        
+        <div class="line" id="p1">
+            <label>Forenames (state all)<span class="req">*</span></label>
+                <div class="inline">
+                    <div>              
+                    <apex:inputField value="{!con.Forenames_state_all__c}" required="true"/>             
+                <br/>                  
+                    </div>             
+                </div>
+        </div>
+        
+        <div class="line" id="p4">
+            <label>Home Address<span class="req">*</span></label>
+            <br/>
+            <br/>
+            <div class="w100">
+                    Address line 1 <br/>            
+            <apex:inputText value="{!con.MailingStreet}" required="true"/>
+            </div>
+            <div class="w100"> Address line 2 <br/>
+               <apex:inputText value="{!con.MailingStreet}"/>               
+            </div>            
+            <div class="inline">             
+                <div>City  <br/>
+                <apex:inputText value="{!con.MailingCity}" required="true"/>
+                </div>
+                <div> State / Province / Region                    
+                <br/>
+                 <apex:inputText value="{!con.MailingState}" required="true"/>
+                </div>
+            </div>
+            <div class="inline">
+                <div> Postal / Zip Code <br/>
+                 <apex:inputText value="{!con.MailingPostalCode}" required="true"/>
+                    <br/>
+                </div>
+                <div> Country <br/> <apex:inputText value="{!con.MailingCountry}" required="true"/>
+                </div>                     
+            </div>
+        </div>
+        
+        <div class="line" id="p1">
+            <label>Tel number<span class="req"></span></label>
+                <div class="inline">
+                    <div>              
+                    <apex:inputField value="{!con.Phone}"/>             
+                <br/>                  
+                    </div>             
+                </div>
+        </div>
+        
+        <div class="line" id="p1">
+            <label>Mobile number<span class="req">*</span></label>
+                <div class="inline">
+                    <div>              
+                    <apex:inputField value="{!con.MobilePhone}" required="true"/>             
+                <br/>                  
+                    </div>             
+                </div>
+        </div>
+        
+        <div class="line" id="p1">
+            <label>Email<span class="req">*</span></label>
+                <div class="inline">
+                    <div>              
+                    <apex:inputField value="{!con.Email}" required="true"/>             
+                <br/>                  
+                    </div>             
+                </div>
+        </div>
+        
+  
+           <div class="line" id="p1">
+            <label>Any previous home addresses in the last 5 years?<span class="req"></span></label>            
+                  <!--  <apex:inputField value="{!con.Any_previous_home_addresses__c}" onchange="allowPreviousAddress();" rendered="{!renderPrevAddr}"/>                      -->
+                   <apex:inputField value="{!con.Any_previous_home_addresses__c}"  onchange="allowPreviousAddress();"/>
+        </div>
+
+        
+     <apex:pageBlock title="Previous Addresses" id="pb_prevAddr" rendered="{!renderPrevAddr}">
+     <apex:pageMessages />
+     <apex:pageblockSection columns="1">
+         <apex:pageBlockTable title="Previous Addresses" var="var_pa" value="{!addPrevAddress}" rendered="{!renderPrevAddr}" > 
+       
+            <apex:column headerValue="Address Line 1">
+                <apex:inputField value="{!var_pa.Address_Line_1__c}" />
+            </apex:column>
+            <apex:column headerValue="Address Line 2" >
+                 <apex:inputField value="{!var_pa.Address_Line_2__c}"/>
+            </apex:column> 
+            <apex:column headerValue="Country" >
+                <apex:inputField value="{!var_pa.Country__c}"/>
+            </apex:column>                 
+            <apex:column headerValue="State" >
+                <apex:inputField value="{!var_pa.State__c}"/>
+            </apex:column>                 
+            <apex:column headerValue="PostCode">
+                <apex:inputField value="{!var_pa.Postcode__c}" style="width:90px"/>
+            </apex:column> 
+            <apex:column headerValue="From" >
+                <apex:inputField value="{!var_pa.From__c}"/>
+            </apex:column>                 
+            <apex:column headerValue="To" >
+                <apex:inputField value="{!var_pa.To__c}"/>
+            </apex:column> 
+                            
+            
+        </apex:pageBlockTable>
+       </apex:pageblockSection>
+       </apex:pageBlock>
+        
+        <div class="line" id="p1">
+            <label>Height<span class="req"></span></label>
+                <div class="inline">
+                    <div>              
+                    <apex:inputField value="{!con.Height_in_cm__c}"/>             
+                <br/>                  
+                    </div>             
+                </div>
+        </div>
+        
+        <div class="line" id="p1">
+            <label>Date of Birth<span class="req">*</span></label>
+                <div class="inline">
+                    <div>              
+                    <apex:inputField value="{!con.Birthdate}" required="true"/>             
+                <br/>                  
+                    </div>             
+                </div>
+        </div>
+        
+        <div class="line" id="p1">
+            <label>Place of Birth<span class="req"></span></label>
+                <div class="inline">
+                    <div>              
+                    <apex:inputField value="{!con.Place_of_birth__c}"/>             
+                <br/>                  
+                    </div>             
+                </div>
+        </div>
+        
+        <div class="line" id="p1">
+            <label>Nationality<span class="req">*</span></label>
+                <div class="inline">
+                    <div>              
+                    <apex:inputField value="{!con.Nationality__c}" required="true"/>             
+                <br/>                  
+                    </div>             
+                </div>
+        </div>
+        
+        <div class="line" id="p1">
+            <label>Occupation<span class="req"></span></label>
+                <div class="inline">
+                    <div>              
+                    <apex:inputField value="{!con.Occupation__c}"/>             
+                <br/>                  
+                    </div>             
+                </div>
+        </div>
+        
+      <div class="line" id="p4">
+            <label>Work Address<span class="req"></span></label>
+            <br/>
+            <br/>
+            <div class="w100">
+                    Address line 1 <br/>            
+            <apex:inputText value="{!con.OtherStreet}"/>
+            </div>
+            <div class="w100"> Address line 2 <br/>
+               <apex:inputText value="{!con.OtherStreet}"/>               
+            </div>            
+            <div class="inline">             
+                <div>City  <br/>
+                <apex:inputText value="{!con.OtherCity}" />
+                </div>
+                <div> State / Province / Region                    
+                <br/>
+                 <apex:inputText value="{!con.OtherState}" />
+                </div>
+            </div>
+            <div class="inline">
+                <div> Postal / Zip Code <br/>
+                 <apex:inputText value="{!con.OtherPostalCode}" />
+                    <br/>
+                </div>
+                <div> Country <br/> <apex:inputText value="{!con.OtherCountry}" />
+                </div>                     
+            </div>
+        </div>
+        
+        <div class="line" id="p1">
+            <label>Tel Number<span class="req"></span></label>
+                <div class="inline">
+                    <div>              
+                    <apex:inputField value="{!con.OtherPhone}"/>             
+                <br/>                  
+                    </div>             
+                </div>
+        </div>      
+        
+     <div> 
+  
+  <apex:commandButton value=" Previous " action="{!RedirectToStartupPage}"/>   &nbsp;&nbsp;&nbsp;&nbsp;
+   <apex:commandButton value="     Next     " action="{!NextButton_PartA}"/> 
+   
+   
+        </div>
+        </span>
+        </div> 
+               
+<div id="footer"> 
+                   
+           </div> 
+            </div> 
+        </div>
+</div>
+
+</apex:form>
+</body>
+</apex:define>
+ </apex:composition>
+</html>
+</apex:page>

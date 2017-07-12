@@ -1,0 +1,248 @@
+<apex:page sidebar="false"  controller="ApplicationManagementController"  showheader="false" cache="true">
+
+          
+      <script>
+    var newWin=null;
+    
+    window.onunload = openLookupPopup;
+    
+          
+    function openLookupPopup(id)
+    {
+        
+        var url="/box/PaymentPage?Id=" + id;
+        newWin=window.open(url, 'Popup','height=380,width=300,left=400,top=200,resizable=no,scrollbars=yes,toolbar=no,status=no');
+        if (window.focus) 
+        {
+            newWin.focus();
+        }
+          <!--  window.opener.location.reload(); -->
+
+        return false;
+    }
+    
+    function openPDFPopup(id)
+    {
+        
+        var url="/box/Application_Form_Pdf?Id=" + id;
+        <!-- newWin=window.open(url, 'Popup','height=500,width=600,left=100,top=100,resizable=no,scrollbars=yes,toolbar=no,status=no');-->
+        newWin=window.open(url);
+        
+        if (window.focus) 
+        {
+            newWin.focus();
+        }
+            
+        return false;
+    }              
+    function closeLookupPopup()
+    {
+       if (null!=newWin)
+       {
+          newWin.close();
+       }  
+    }
+</script>
+
+  
+<html>
+<apex:composition template="communitytemplate">
+  <apex:define name="custompage">
+    <body> 
+    
+    <apex:form >
+    
+    
+   
+<div id="container"> 
+         
+                
+                <apex:image id="theImage1" value="{!$Resource.slcheaderimages}" width="1000" height="150"/> 
+          
+             
+           
+<div class="sidebar">
+</div>
+<div class="content">
+<style type="text/css">
+    #step2 , #step3
+    {
+        display:none;
+    }
+    .content requireddiv
+    {
+    font-size:80% !important; padding: 0,0,0,0;
+    
+    }
+    
+     </style>  
+<div class="requireddiv ">     
+ <apex:pageMessages id="msgs"></apex:pageMessages>  </div>
+
+
+    <div class="title">
+                       <h2>Application Management</h2>
+    </div>
+    <div id="formContent">
+     
+        <span id="spacespan"></span>
+        <div id="step1">
+        <span id="step1id">
+        
+           
+         <apex:pageBlock title="Applications" id="pb">
+         <apex:pageMessages />
+         <apex:variable var="rowNumber" value="{!0}"/>
+         <apex:pageblockSection columns="1">
+         <apex:pageBlockTable title="Applications" var="var_mod" value="{!ListApplications}"> 
+
+        
+         <apex:outputText value="{0}" style="text-align:center;"> 
+         <apex:param value="{!rowNumber+1}" /> 
+         </apex:outputText>
+           
+             <apex:column headerValue="Application ID">
+                   <!--<apex:inputField value="{!var_mod.ID}" />-->
+                   <apex:outputText value="{!var_mod.Name}"/>
+                   
+            </apex:column>
+         <apex:column headerValue="License Type" >
+             <apex:outputText value="{!var_mod.License_Type__c}"/>
+         </apex:column> 
+         <apex:column headerValue="Status" >
+            <apex:outputText value="{!var_mod.Application_Status__c}"/>
+         </apex:column> 
+        
+       <apex:column headerValue="Action" >
+       <!-- <apex:outputText value="{!var_mod.Edit__c}"/>-->
+      
+<!-- {!if(var_mod.Application_Status__c =='Submitted' && var_mod.Payment_Status__c == 'Pending',{!<apex:commandLink value="Pay"  onclick="openLookupPopup('{!var_mod}'); return false">},"Hello")}  -->
+ 
+
+      <apex:commandLink value="Pay"  onclick="openLookupPopup('{!var_mod}'); return false" rendered="{! If(var_mod.Application_Status__c =='Submitted' && var_mod.Payment_Status__c == 'Pending' && var_mod.Payment_Status__c != 'Paid' ,true,false)}"/>      
+        
+      <apex:commandLink value="PDF Form"  onclick="openPDFPopup('{!var_mod}'); return false" rendered="{! If(var_mod.Application_Status__c =='Submitted' && var_mod.Payment_Status__c != 'Pending' ,true,false)}"/>       
+       
+       <apex:commandLink value="Edit" action="/apex/ApplicationForm_PartA?applicantID={!var_mod}" rendered="{! If(var_mod.Application_Status__c =='Draft' || var_mod.Application_Status__c == 'Need More Information' ,true,false)}"/>
+         &nbsp;
+       <apex:commandLink value="Upload" action="/apex/UploadSupportingDoc?ID={!var_mod}&abc={!var_mod}" rendered="{! If(var_mod.Application_Status__c =='Draft' || var_mod.Application_Status__c == 'Need More Information' ,true,false) }"> 
+       <apex:param name="abc" value="1"/> </apex:commandLink>
+
+       
+     <!-- <script>
+    
+        alert('Hello');
+        
+        if (var_mod.Application_Status__c =='Submitted' && var_mod.Payment_Status__c == 'Pending') 
+        {
+            <apex:commandLink value="Pay"  onclick="openLookupPopup('{!var_mod}'); return false" rendered="{! If(var_mod.Application_Status__c =='Submitted' && var_mod.Payment_Status__c == 'Pending' ,true,false) }"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       
+        }
+         
+              
+        if (var_mod.Application_Status__c =='Submitted' && var_mod.Payment_Status__c == 'Paid') 
+        {
+             <apex:commandLink value="PDF Form"  onclick="openPDFPopup('{!var_mod}'); return false" rendered="{! If(var_mod.Application_Status__c =='Submitted' && var_mod.Payment_Status__c != 'Pending' ,true,false) }"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       
+        } 
+         
+        if (var_mod.Application_Status__c =='Draft' || var_mod.Application_Status__c == 'Need More Information') 
+        {
+           <apex:commandLink value="Edit" action="/apex/ApplicationForm_PartA?applicantID={!var_mod}" rendered="{! If(var_mod.Application_Status__c =='Draft' || var_mod.Application_Status__c == 'Need More Information' ,true,false) }"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <apex:commandLink value="Upload" action="/apex/UploadSupportingDoc?ID={!var_mod}&abc={!var_mod}" rendered="{! If(var_mod.Application_Status__c =='Draft' || var_mod.Application_Status__c == 'Need More Information' ,true,false) }"> 
+           <apex:param name="abc" value="1"/> </apex:commandLink>    
+        }
+        </script>-->
+         
+         </apex:column> 
+         
+        
+         <!---------------------------------------------------------
+          <apex:column headerValue="ID" >
+            <apex:outputText value="{!var_mod.Id}"/>
+         </apex:column>
+         <!---------------------------------------------------------->
+             
+ 
+ 
+   
+ </apex:pageBlockTable>
+ 
+ </apex:pageblockSection>
+
+ </apex:pageBlock>
+
+        
+     
+                     <p>
+    Hello, and welcome to our customer service.<br/>
+    Please click the link to begin a live chat session: 
+
+
+<a id="liveagent_button_online_57328000000PBYI" href="javascript://Chat" style="display: none;" onclick="liveagent.startChat('57328000000PBYI')">
+ Chat Now</a>
+ <div id="liveagent_button_offline_57328000000PBYI" style="display: none;">
+Sorry, Offline</div>
+
+<script type="text/javascript">
+if (!window._laq) { window._laq = []; }
+window._laq.push(function(){liveagent.showWhenOnline('57328000000PBYI', document.getElementById('liveagent_button_online_57328000000PBYI'));
+liveagent.showWhenOffline('57328000000PBYI', document.getElementById('liveagent_button_offline_57328000000PBYI'));
+});</script>
+
+</p>
+
+<script type='text/javascript' src='https://c.la10.salesforceliveagent.com/content/g/js/36.0/deployment.js'></script>
+
+<script type='text/javascript'>
+        liveagent.init('https://d.la10.salesforceliveagent.com/chat', '57228000000PBV5', '00D280000017Egi');
+        
+        liveagent.addCustomDetail('First Name', '{!conRecord.FirstName}');
+        liveagent.addCustomDetail('Last Name', '{!conRecord.LastName}');
+        liveagent.addCustomDetail('Id', '{!app.Id}');
+        liveagent.addCustomDetail('Email', '{!conRecord.Email}');
+        liveagent.addCustomDetail('Application:', '{!app.Name}');
+        
+        //liveagent.findOrCreate('Application__c').map('Id', 'Id', true, true, false).saveToTranscript('{!app.Id}').showOnCreate();
+        liveagent.findOrCreate('Contact').map('Email', 'Email', true, true, false);
+        //liveagent.findOrCreate('Contact').saveToTranscript('Contact.Id').showOnCreate().linkToEntity('Application__c','Applicant__c');
+        //liveagent.findOrCreate('Case').map('ContactEmail', 'Email', true, true, true).showOnCreate();
+        
+        //liveagent.findOrCreate('Contact').map('Email', 'Email', true, true, false);
+        //liveagent.findOrCreate('Contact').saveToTranscript('Contact.Id').showOnCreate().linkToEntity('Application__c','Applicant__c');
+        //liveagent.findOrCreate('Contact').saveToTranscript('Contact.Id').showOnCreate().linkToEntity('Application__c','Applicant__c');
+        
+        //liveagent.findOrCreate('Contact').linkToEntity('Application__c','Applicant__c');
+        
+        //liveagent.findOrCreate('Application__c').map('Id', 'Id', true, true, false).saveToTranscript('{!app.Id}').showOnCreate();
+        
+        //liveagent.findOrCreate('Contact').map('Email', 'Email', true, true, false).saveToTranscript('Contact.Id');
+        //liveagent.findOrCreate('Contact').showOnCreate();
+        
+        //liveagent.findOrCreate('Application__c').map('Id', 'Id', true, true, false).saveToTranscript('{!app.Id}');
+        //liveagent.findOrCreate('Application__c').showOnCreate();
+                
+</script>  
+   
+   
+   
+        
+     <div> 
+     <apex:commandButton value=" Close " action="{!RedirectToHome}"/> 
+  
+   
+        </div>
+        </span>
+        </div> 
+               
+<div id="footer"> 
+    
+           </div> 
+            </div> 
+        </div>
+</div>
+
+</apex:form>
+</body>
+</apex:define>
+ </apex:composition>
+</html>
+</apex:page>

@@ -1,0 +1,129 @@
+<apex:page showHeader="false" sidebar="false" controller="CommunitiesLoginController">
+  <html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta></head>
+
+<div id="prm-home">
+    <div id="#container">
+        <div id="header">
+            <div class="site-width">
+                <div id="header-content"> 
+                 <div id="logo">
+                 <apex:image id="theImage" value="{!$Resource.Logoportal}"  />
+                 <a href="https://atosboxapp-developer-edition.ap2.force.com/box/box" title="BOX Portal">
+                 <span>Licensing</span> Portal</a></div>
+                                <div id="navigation">
+                                    <div class="mobile-inline-block" id="menu-icon"></div>
+                               
+                                    <ul class="non-mobile" id="menu">
+                                            <!--<li><a href="https://atosboxapp-developer-edition.ap2.force.com/box/login" onclick="return openResource();">Logout</a></li>-->
+                                            <!--<li><a  href="https://www.google.co.in/?gfe_rd=cr&ei=BQ1hVrjoFare8gfnpLPQCg" >Register</a></li>-->
+                                       
+                                            <!--<li><a id= "reg" href="/box/login" >Logout</a></li>-->
+                                          <li><apex:outputLink value="{!$Site.Prefix}/secur/logout.jsp" rendered="{!NOT(ISPICKVAL($User.UserType,'Guest'))}">Logout</apex:outputLink></li>
+                                          
+                                    </ul>
+                                 </div>          
+                </diV>
+            </div>
+        </div>
+        
+        <div id="body">
+        
+        <div class="site-width">
+                  
+          <apex:insert name="custompage"/><br/><br/><br/><br/><br/>
+
+       
+      
+                       
+            </div>
+            </div>
+                     <div id="footer">
+                        <div class="site-width">Copyright &copy; 2015 BOX Portal. All rights reserved.</div>
+                    </div>   
+    </div>
+</div>    
+    
+
+<style type="text/css">
+                .mobile{display: none;}
+                .mobile-inline{display: none;}
+                .mobile-inline-block{display: none;}
+                .non-mobile{display: block;}
+                .non-mobile-inline{display: inline;}
+                body.popup-loaded{overflow:hidden;}
+                #prm-home{font-family: Open Sans,Arial,sans serif;font-size: 10px;background: #d2d1d0;padding-top: 4.4em;}
+                #prm-home img{width:auto;}
+                #prm-home a img{border:none;}
+                #prm-home .site-width{max-width:96em;padding:0 1em;margin:auto;}
+                #prm-home .site-width-plus{max-width:98em;margin:auto;}
+                #prm-home #header{background-color: #333;position: fixed;width:100%;top:0;z-index: 1;}
+                #prm-home #header-content{display:table;background-image: #212121;width: 100%;height:4.4em; ocolor:blue;}
+                #prm-home #logo{/*background: url("images/logo.gif");background-size:cover;*/width:40%;display: table-cell;vertical-align:middle; color:blue; }
+                #prm-home #logo a{background:url("") no-repeat left center;background-size:1.5em auto; padding-left:1.7em; font-family: Open Sans,Arial,sans serif;text-decoration: none;font-size: 2em;font-weight: bold;color: #848484;}
+                #prm-home #logo span{color: #FBAE19;}
+                #prm-home #navigation{display: table-cell;text-align: right;vertical-align:middle;}
+                #prm-home #menu-icon{background :url("/resource/prm/staticresources/images/nav-icon.png") no-repeat center;width:3em;height:3em;cursor: pointer;opacity:.7;}
+                #prm-home #menu li{display:inline;}
+                #prm-home #menu li a{display:inline-block;color: #ededec;text-decoration: none;font-size:1.3em;padding:0 .5em; font-weight: bold;}
+                #prm-home #menu li a:hover{color:#c0c0c0;}
+                #prm-home .flexslider{margin-bottom: 0;margin-top: 1em;} 
+                #prm-home .slides a {display: block; padding: 5px;text-decoration: none;border: 1px solid #ececec;margin: 5px;text-align: center;}
+                #prm-home .slides a span{color: #666;font-size: 1.1em;display: block;font-weight: bold;line-height: 1em;padding-top: 5px;}
+                #prm-home .slides a:hover span{color:#333;}
+                #prm-home #tiles{margin-top:0em;}
+                #prm-home .tile {float:left;width:calc((100% - 6em)/3);margin: 1em; }
+                #prm-home .tile-content {background: #fff;  -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.2); -moz-box-shadow: 0 1px 4px rgba(0,0,0,.2); -o-box-shadow: 0 1px 4px rgba(0,0,0,.2); box-shadow: 0 1px 4px rgba(0,0,0,.2); zoom: 1;}
+                #prm-home .tile a{color: #666;text-decoration: none;text-align: center;}
+                #prm-home .tile a .tile-title {color: #666;padding-top:.5em;font-size: 1.4em;font-weight: bold;}
+                #prm-home .tile a .tile-description {padding-bottom:.5em;font-size: 1.1em;}
+                #prm-home #footer{background-color: #333;color:#666;line-height: 4em;}
+                #prm-home #featured-resources {  background: #fff;  -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.2); -moz-box-shadow: 0 1px 4px rgba(0,0,0,.2); -o-box-shadow: 0 1px 4px rgba(0,0,0,.2); box-shadow: 0 1px 4px rgba(0,0,0,.2);   margin-bottom: 1em;  margin-top: 1em;}
+                #prm-home #featured-title {  background-color: #424242;  color: #fff;  font-size: 1.5em;  font-weight: bold;  line-height: 2.2em;  padding-left: 10px;}
+                #prm-home .resource-item {padding: 10px;}
+                #prm-home .resource-item:nth-child(even) {background-color:  #ececec;}
+                #prm-home .item-link {font-size: 1.3em;font-weight: bold;line-height: 1.8em;}
+                #prm-home .PDF-icon {background: url("/resource/prm/staticresources/images/pdf_icon.gif") no-repeat;padding-left: 22px;}
+                #prm-home .item-description {font-size: 1.2em;}
+                #prm-home .clear {clear: both; font-size: 0px; line-height: 0px; height: 1px;}
+                #prm-home .flex-viewport {max-height: 2000px; -webkit-transition: all 1s ease; -moz-transition: all 1s ease; -o-transition: all 1s ease; transition: all 1s ease;}
+                #prm-home .logo{max-width:1px;width:100%}
+                #prm-home .flexslider {
+margin-bottom: 0;
+margin-top: 1em;
+}
+                
+                @font-face {font-family: 'Open Sans';font-style: normal;font-weight: 400;src: local('Open Sans'), local('OpenSans'), url(//fonts.gstatic.com/s/opensans/v10/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');}
+                /*Tablet*/
+                @media only screen and (max-width: 1023px) {
+                    #prm-home .tile {width:calc((100% - 4em)/2);}
+                }
+                /*Mobile*/
+                @media only screen and (max-width: 480px) {
+                    .mobile{display: block;}
+                    .mobile-inline{display: inline;}
+                    .mobile-inline-block{display: inline-block;}
+                    .non-mobile{display: none;}
+                    .non-mobile-inline{display: none;}
+                    #prm-home{font-size: 9px;}
+                    #prm-home #menu { left: 0;  position: fixed;  top: 4.3em;  width: 100%;background: #333;}
+                    #prm-home #menu li a {  border-top: 1px solid #666;  display: block;  line-height: 3em;  text-align: left;background: url('/resource/prm_home/images/nav-arrow.png') no-repeat 97% center;background-size:1em auto;}
+                    #prm-home #menu li a:hover{opacity:.5;}
+                    #prm-home .tile {width:calc((100% - 2em));}
+                }
+            </style>
+      
+      <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-72146317-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+            
+</html> 
+  
+</apex:page>

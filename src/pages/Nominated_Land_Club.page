@@ -1,0 +1,209 @@
+<apex:page sidebar="false" Controller="ApplicationFormController" showheader="false">
+ 
+<html>
+<apex:composition template="communitytemplate">
+  <apex:define name="custompage">
+    <body> 
+    
+    <apex:form >
+
+        <div id="container"> 
+             <apex:image id="theImage1" value="{!$Resource.slcheaderimages}" width="1000" height="150"/> 
+          <!--  <span style="padding-left:70px"/>  
+              <apex:image id="theImage" value="{!$Resource.Flow}" width="900" height="100" />-->
+             
+           
+        <div class="sidebar">
+        </div>
+    <div class="content">
+     <style type="text/css">
+        #step2 , #step3
+        {
+            display:none;
+        }
+        .content requireddiv
+        {
+            font-size:80% !important; padding: 0,0,0,0;
+        }
+    
+     </style>  
+    <div class="requireddiv ">     
+     <apex:pageMessages id="msgs"></apex:pageMessages>  </div>
+
+    <div class="title">  <h2>APPLICATION FOR THE GRANT OR RENEWAL OF A FIREARM AND/OR SHOTGUN CERTIFICATE</h2>
+    </div>
+    <div id="formContent">
+        <div class="info">
+            <div><h2> <center>NOMINATED LAND</center> </h2></div>
+        </div> 
+        <span id="spacespan"></span>
+        <div id="step1">
+        <span id="step1id"> 
+
+        <div class="line" id="p1">
+            <label>Name and address of land (inc postcode) <span class="req"></span></label>
+                <div class="inline">
+                    <div class="w100">               
+                        <pre><apex:inputField value="{!nlc.Name_address_of_land__c}"/> 
+                        </pre>
+                     </div>             
+                </div>
+        </div>
+        
+        <div class="line" id="p1">
+            <label>Landowner’s name<span class="req"></span></label>
+                <div class="inline">
+                    <div>              
+                    <pre><apex:inputField value="{!nlc.Landowner_s_name__c}"/>             
+                    </pre>
+                <br/>                  
+                    </div>             
+                </div>
+        </div>
+        
+        <div class="line" id="p1">
+            <label>Landowner’s telephone number (s)<span class="req"></span></label>
+                <div class="inline">
+                    <div>              
+                        <pre><apex:inputField value="{!nlc.Landowner_s_telephone__c}"/> 
+                    </pre>
+                               
+                <br/>                  
+                    </div>             
+                </div>
+        </div>
+        
+        <div class="line" id="p1">
+            <label>Acreage of land<span class="req"></span></label>
+                <div class="inline">
+                    <div>              
+                    <apex:inputField value="{!nlc.Acreage_of_land__c}"/>             
+                <br/>                  
+                    </div>             
+                </div>
+        </div>
+        
+        
+         <div class="line" id="p1">
+            <label>Calibres authorised to be used on the above land <span class="req"></span></label>
+                <div class="inline">
+                    <div>              
+                    <apex:inputField value="{!nlc.Calibres_authorised__c}"/>             
+                <br/>                  
+                    </div>             
+                </div>
+        </div>
+        
+        
+        <div class="line" id="p1">
+            <label>The use is for: <span class="req"></span></label>
+                <div class="inline">
+                    <div>              
+                       <apex:inputField value="{!nlc.The_use_is_for__c}"/>   <br/> 
+                    </div>             
+                </div>
+        </div>
+        
+        <div class="line" id="p1">
+            <label>If others , Please state here<span class="req"></span></label>
+                <div class="inline">
+                    <div>              
+                       <apex:inputField value="{!nlc.If_in_use_for_others__c}"/>   <br/> 
+                    </div>             
+                </div>
+        </div>
+        
+        
+        <div class="line" id="p1">
+            
+            <apex:inputField value="{!nlc.Declaration_by_the_land_owner__c}"/> 
+            <label>I confirm that the above named has permission to use the requested calibres of firearm over this land. <span class="req">*</span></label>
+                
+        </div>
+           
+        
+             <div>
+             Signature of land owner 
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              Date <br/> 
+
+            </div>
+        
+         <br/> <br/>  <br/> <br/> 
+
+
+        </span>
+        </div> 
+                <br/> <br/>  <br/> 
+       <div class="info">
+            <div><h2> <center>NOMINATED CLUB</center> </h2></div>
+        </div>       
+             
+        <span id="spacespan"></span>
+        <div id="step1">
+        <span id="step1id"> 
+
+        <div class="line" id="p1">
+            <label>Club name <span class="req"></span></label>
+                <div class="inline">
+                    <div>               
+                        <apex:inputField value="{!nlc.Club_name__c}"/> 
+                    </div>             
+                </div>
+        </div>   
+            
+         <div class="line" id="p1">
+            <label>Club Secretary’s name <span class="req"></span></label>
+                <div class="inline">
+                    <div>               
+                        <apex:inputField value="{!nlc.Club_Secretary_s_name__c}"/> 
+                    </div>             
+                </div>
+        </div>    
+            
+           <div class="line" id="p1">
+           
+           
+            <label> <apex:inputField value="{!nlc.Declaration_by_the_Club_Secretary__c}"/>  I confirm that the above named is a full member of this club; their membership expires on <span class="req">*</span></label>
+                <div class="inline">
+                    <div>               
+                        <apex:inputField value="{!nlc.Membership_expiry_Date__c}"/> 
+                    </div>             
+                </div>
+        </div>     
+            
+               <div class="inline">
+                <div> Signature of Club Secretary<br/>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <br/>
+                </div>
+                <div> Date <br/> 
+                </div>                     
+            </div>
+        
+         <br/> <br/>  <br/> <br/> 
+            
+            
+        </span>
+        </div>    
+            
+            <br/> <br/> 
+           
+       
+     <div>
+     <apex:commandButton value="Previous" action="{!PreviousButton_NominatedLand}"/> 
+   <apex:commandButton value="Next" action="{!NextButton_NominatedLand}"/> 
+   
+        </div>
+             <div id="footer">      
+           </div> 
+            </div> 
+        </div>
+</div>
+
+</apex:form>
+</body>
+</apex:define>
+ </apex:composition>
+</html>
+</apex:page>

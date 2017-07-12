@@ -1,0 +1,103 @@
+<apex:page controller="DisplayCerificatesControlller"  sidebar="false" showheader="false" cache="true"  >
+ <html>
+        <apex:composition template="communitytemplate">
+            <apex:define name="custompage">
+                <body> 
+                    <apex:form >
+                        <div id="container">                          
+                            <apex:image id="theImage1" value="{!$Resource.slcheaderimages}" width="212" height="168"/>                           
+                            <div class="sidebar"></div>
+                            <div class="content">
+                                <style type="text/css">
+                                #step2 , #step3
+                                {
+                                    display:none;
+                                }
+                                .content requireddiv
+                                {
+                                    font-size:80% !important; padding: 0,0,0,0;    
+                                }
+                                </style>  
+                                <div class="requireddiv ">     
+                                    <apex:pageMessages id="msgs"></apex:pageMessages>  
+                                </div>
+                                <div class="title">
+                                    <h2>LIST OF CERTIFICATES </h2>
+                                </div>
+                                <div id="formContent">
+                                    <span id="spacespan"></span>
+                                    <div id="step1">
+                                        <span id="step1id">
+   
+            <!-------------------------------------------Content starts------------------------------------------------------------->
+              
+                                            <!--  <apex:pageBlock title="certificate" >
+                   <apex:pageBlockTable value="{!Certificate}" var="r">                        
+                    <apex:column headerValue="Certificate Name">
+                            <apex:commandLink value="{!r.Name}" action="/apex/viewmycertificate?id={!r.id}" ></apex:commandLink>
+                        </apex:column>
+                        
+                        <apex:column value="{!r.Date_of_Expiry__c}" />
+                        <apex:column value="{!r.Date_of_Issue__c}" />
+                        <apex:column value="{!r.Type__c}" />                        
+                     </apex:pageBlockTable>
+                 </apex:pageBlock>-->
+    <!----------------------------------------Content end----------------------------------------------------------->
+                                            
+                                            
+            <!-------------------------------------------Content starts------------------------------------------------------------->
+              <apex:pageBlock title="Certificates" id="ct">
+         <apex:pageMessages />
+         <apex:variable var="rowNumber" value="{!0}"/>
+         <apex:pageblockSection columns="1">
+        <apex:pageBlockTable title="certificates" var="var" value="{!Listcertificates}">         
+         
+            <apex:outputText value="{0}" style="text-align:center;"> 
+         
+            <apex:param value="{!rowNumber+1}" /> 
+         
+            </apex:outputText>
+                    <apex:column headerValue="Certificate Name">
+                      <apex:commandLink action="/apex/viewmycertificate?id={!var.id}" > 
+                        <apex:outputText value="{!var.Name}"/>
+                      </apex:commandLink>    
+                   </apex:column>
+             <apex:column headerValue="Type">
+                     <apex:outputText value="{!var.Type__c}"/>
+                   </apex:column>
+            
+                   <apex:column headerValue="Date of Expiry">
+                     <apex:outputText value="{!var.Date_of_Expiry__c}"/>
+                   </apex:column>
+            
+                          <apex:column headerValue="Date of Issue">
+                     <apex:outputText value="{!var.Date_of_Issue__c}"/>
+                   </apex:column>
+            
+             
+
+        </apex:pageBlockTable>
+             
+ </apex:pageblockSection>
+ 
+ <!---------------------------------------------------------------------------------------------------------------->
+ 
+ <!---------------------------------------------------------------------------------------------------------------->
+ 
+ 
+ </apex:pageBlock>
+    <!----------------------------------------Content end----------------------------------------------------------->
+    
+                                    </span>
+                                    </div>   
+                                    <div id="footer"></div> 
+                                </div>         
+                            </div>
+                        </div>
+                    </apex:form>
+                </body>
+            </apex:define>
+        </apex:composition>
+    </html>
+    
+</apex:page>

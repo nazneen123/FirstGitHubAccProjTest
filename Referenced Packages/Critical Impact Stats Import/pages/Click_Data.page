@@ -1,0 +1,3 @@
+<apex:page showHeader="true" tabstyle="crit__Click_Data__c"> 
+    <apex:ListViews type="crit__Click_Data__c" /> 
+</apex:page>

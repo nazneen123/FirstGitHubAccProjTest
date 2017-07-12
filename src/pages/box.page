@@ -1,0 +1,225 @@
+<apex:page showHeader="false" sidebar="false" docType="html-5.0" title="BOX" >
+
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta></head>
+
+<div id="prm-home">
+    <div id="#container">
+        <div id="header">
+            <div class="site-width">
+                <div id="header-content"> 
+                 <div id="logo">
+                 <apex:image style="width:auto;" id="thelogo" value="{!$Resource.Logoportal}"   />              
+                 <a href="https://atosboxapp-developer-edition.ap2.force.com/box/box" title="BOX Portal">
+                 <span>Licensing Portal</span> </a></div>
+                                <div id="navigation">
+                                <!-- <apex:outputLabel style="font-size:120%;font-weight:bold;color: #809009;">For Any Assistance</apex:outputLabel>  -->
+                                    <div class="mobile-inline-block" id="menu-icon"></div>
+                               
+                                    <ul class="non-mobile" id="menu">
+         <!--<li><a href="https://atosboxapp-developer-edition.ap2.force.com/box/login" onclick="return openResource
+         ();">Logout</a></li>-->
+         <!--<li><a  href="https://www.google.co.in/?gfe_rd=cr&ei=BQ1hVrjoFare8gfnpLPQCg" >Register</a></li>-->
+         <!--<li><a id= "reg" href="/box/login" >Logout</a></li>-->
+         
+    <li> 
+                                            
+                                            
+   
+<a id="liveagent_button_online_57328000000PBYI" href="javascript://Chat" style="display: none;font-size:120%;font-weight:bold;color: #eec;" onclick="liveagent.startChat('57328000000PBYI')">
+ For Any Assistance Chat Now</a>
+ <div id="liveagent_button_offline_57328000000PBYI" style="display: none;">
+Sorry, Offline</div>
+
+<script type="text/javascript">
+if (!window._laq) { window._laq = []; }
+window._laq.push(function(){liveagent.showWhenOnline('57328000000PBYI', document.getElementById('liveagent_button_online_57328000000PBYI'));
+liveagent.showWhenOffline('57328000000PBYI', document.getElementById('liveagent_button_offline_57328000000PBYI'));
+});</script>
+
+
+
+<script type='text/javascript' src='https://c.la10.salesforceliveagent.com/content/g/js/36.0/deployment.js'></script>
+<script type='text/javascript'>
+liveagent.init('https://d.la10.salesforceliveagent.com/chat', '57228000000PBV5', '00D280000017Egi');
+</script> 
+                                            
+                                            </li>
+                  
+        <li><apex:outputLink value="HelloUser" >{!$User.FirstName} {!$User.LastName}</apex:outputLink></li>                       
+        <li><apex:outputLink value="{!$Site.Prefix}/secur/logout.jsp" rendered="{!NOT(ISPICKVAL
+        ($User.UserType,'Guest'))}">Logout</apex:outputLink></li>
+                                          
+                                    </ul>
+                                 </div>          
+                </diV>
+            </div>
+        </div>
+       
+        <div id="body">
+                        <div class="site-width">
+                            <div id="products">
+                            <div id="logo">
+                        
+                       <apex:image id="theImage" value="{!$Resource.Header}" width="100%" height="300" />
+                            </div>
+                                                    
+                            </div>
+                        </div> 
+                        <div class="site-width-plus">
+                            <div id="tiles">
+                                <div class="tile"><div class="tile-content"><a href="/box/ApplicationFormStartupPage" onclick="return openResource(&#39;/Apply 
+
+Firearm/Shotgun &#39;,{resourceType:&#39;iframe&#39;});"><apex:image id="form" value="{!$Resource.Form}" width="80" height="200" />
+                                <div class="tile-title">Apply Firearm/Shotgun </div><div class="tile-description">Using this user can able to apply 
+
+Firearm/Shotgun.</div></a></div></div>
+                                <div class="tile">
+                                <div class="tile-content"><a href="/box/ApplicationManagement" onclick="return openResource(&#39;/Manage 
+
+Firearm/Shotgun&#39;,{resourceType:&#39;iframe&#39;});"><apex:image value="{!$Resource.EditLogo}" width="80" height="200" /><div class="tile-title">Manage 
+
+Firearm/Shotgun</div><div class="tile-description">Using this user can able to Edit Firearm/Shotgun.</div></a></div></div>
+                                <!--<div class="tile"><div class="tile-content"><a href="/box/Display_certificate" onclick="return openResource(&#39;/Certificate 
+
+Details&#39;,{resourceType:&#39;iframe&#39;});" ><apex:image id="Certificate" value="{!$Resource.Certificate}" width="80" height="200" /><div class="tile-
+
+title">Certificate Details</div><div class="tile-description">Displaying Certificate Details.</div></a></div></div> -->
+                                <div class="tile"><div class="tile-content"><a href="/box/Display_certificate" onclick="return openResource(&#39;/Certificate 
+                                Details&#39;,{resourceType:&#39;iframe&#39;});" ><apex:image id="Certificate" value="{!$Resource.Certificate}" width="80" height="200" />
+                                <div class="tile-title">Certificate Details</div><div class="tile-description">Displaying Certificate Details.</div></a></div></div>
+                                
+                            </div>
+                        </div>
+
+
+
+                           <div class="clear"></div> 
+                            <div class="site-width">  
+                                 <div id="featured-resources">
+                                     <div id="featured-title">Terms and Conditions</div>
+                                        <div id="item-container">
+                                             <div class="resource-item">
+                                                 <a class="item-link PDF-icon" href="" onclick="return openResource
+
+(&#39;/sfc/servlet.shepherd/version/download/06828000000LvXrAAK&#39;,
+
+{resourceType:&#39;PDF&#39;,newWindow:true,isExternal:false,width:&#39;&#39;,height:&#39;&#39;,title:&#39;Macauodi Resourse Guide&#39;});">Please read these BEFORE 
+
+completing the form</a>
+                                                     <div class="item-description">
+                                                     
+                                                     You must not withhold information about any conviction. This includes motoring
+                                            offences, binding overs, formal written warnings, cautions and convictions in and outside
+                                            Great Britain, and (by virtue of the Rehabilitation of Offenders Act 1974 (Exceptions) Order
+                                            1975) convictions which are spent under the 1974 Act. A conditional discharge and an
+                                            absolute discharge both count as convictions for this purpose. Details of parking offences
+                                            and fixed penalty notices do not need to be declared.<br></br>
+                                            Applications must be accompanied by four identical photographs of you and sized 45mm x
+35mm. The photographs must be full face and without a hat and must be a current true
+likeness. Ordinary passport style photographs are suitable for this purpose. A computer
+generated likeness is acceptable if it is full face, against a plain background and printed on
+good quality gloss or matt paper. If you are applying for both a firearm and a shotgun
+certificate you need only submit four photographs.<br></br>
+One of the photographs must be signed in ink, on the back by you, the applicant.<br></br>
+Unless otherwise advised by the police, you should post or take the completed form
+together with the fee and photographs to the police firearms licensing department.<br></br>
+Personal health and medical declaration. You must disclose any physical or mental health
+condition that may affect your ability to safely possess and use a firearm   (including a
+shotgun). This includes for example epilepsy, stroke, stress related illness, depression,
+alcoholism, heart disease, cancer etc. If in doubt, consult your GP. The police may contact
+your GP and/or specialist to obtain factual details of any medical history in respect of your
+application.<br></br><br></br><br></br><br></br><br></br>
+                                                     
+                                                     </div>
+                                                      
+                                                  </div>                                      
+                                          </div>                                    
+                                  </div>                                     
+                            </div>
+                        </div>
+            
+                     <div id="footer">
+                        <div class="site-width">Copyright &copy; 2015 BOX Portal. All rights reserved.</div>
+                    </div>   
+    </div>
+</div>    
+    
+    
+    
+    <style type="text/css">
+                .mobile{display: none;}
+                .mobile-inline{display: none;}
+                .mobile-inline-block{display: none;}
+                .non-mobile{display: block;}
+                .non-mobile-inline{display: inline;}
+                body.popup-loaded{overflow:hidden;}
+                #prm-home{font-family: Open Sans,Arial,sans serif;font-size: 10px;background: #d2d1d0;padding-top: 4.4em;}
+                #prm-home img{width: 100%;}
+                #prm-home a img{border:none;}
+                #prm-home .site-width{max-width:96em;padding:0 1em;margin:auto;}
+                #prm-home .site-width-plus{max-width:98em;margin:auto;}
+                #prm-home #header{background-color: #333;position: fixed;width:100%;top:0;z-index: 1;}
+                #prm-home #header-content{display:table;background-image: #212121;width: 100%;height:4.4em; ocolor:blue;}
+                #prm-home #logo{/*background: url("images/logo.gif");background-size:cover;*/width:40%;display: table-cell;vertical-align:middle; color:blue; }
+                #prm-home #logo a{background:url("") no-repeat left center;background-size:1.5em auto; padding-left:1.7em; 
+                padding-bottom:1.7em; font-family: Open Sans,Arial,sans serif;text-decoration: none;font-size: 2em;font-weight: bold;color: #848484;}
+                
+                #prm-home #logo span{color: #FBAE19; position:absolute;padding-top:1em;}
+                #prm-home #navigation{display: table-cell;text-align: right;vertical-align:middle;}
+                #prm-home #menu-icon{background :url("/resource/prm/staticresources/images/nav-icon.png") no-repeat center;width:3em;height:3em;cursor: pointer;opacity:.7;}
+                #prm-home #menu li{display:inline;}
+                #prm-home #menu li a{display:inline-block;color: #ededec;text-decoration: none;font-size:1.3em;padding:0 .5em; font-weight: bold;}
+                #prm-home #menu li a:hover{color:#c0c0c0;}
+                #prm-home .flexslider{margin-bottom: 0;margin-top: 1em;} 
+                #prm-home .slides a {display: block; padding: 5px;text-decoration: none;border: 1px solid #ececec;margin: 5px;text-align: center;}
+                #prm-home .slides a span{color: #666;font-size: 1.1em;display: block;font-weight: bold;line-height: 1em;padding-top: 5px;}
+                #prm-home .slides a:hover span{color:#333;}
+                #prm-home #tiles{margin-top:0em;}
+                #prm-home .tile {float:left;width:calc((100% - 6em)/3);margin: 1em; }
+                #prm-home .tile-content {background: #fff;  -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.2); -moz-box-shadow: 0 1px 4px rgba(0,0,0,.2); -o-box-shadow: 0 1px 4px rgba(0,0,0,.2); box-shadow: 0 1px 4px rgba(0,0,0,.2); zoom: 1;}
+                #prm-home .tile a{color: #666;text-decoration: none;text-align: center;}
+                #prm-home .tile a .tile-title {color: #666;padding-top:.5em;font-size: 1.4em;font-weight: bold;}
+                #prm-home .tile a .tile-description {padding-bottom:.5em;font-size: 1.1em;}
+                #prm-home #footer{background-color: #333;color:#666;line-height: 4em;}
+                #prm-home #featured-resources {  background: #fff;  -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.2); -moz-box-shadow: 0 1px 4px rgba(0,0,0,.2); -o-box-shadow: 0 1px 4px rgba(0,0,0,.2); box-shadow: 0 1px 4px rgba(0,0,0,.2);   margin-bottom: 1em;  margin-top: 1em;}
+                #prm-home #featured-title {  background-color: #424242;  color: #fff;  font-size: 1.5em;  font-weight: bold;  line-height: 2.2em;  padding-left: 10px;}
+                #prm-home .resource-item {padding: 10px;}
+                #prm-home .resource-item:nth-child(even) {background-color:  #ececec;}
+                #prm-home .item-link {font-size: 1.3em;font-weight: bold;line-height: 1.8em;}
+                #prm-home .PDF-icon {background: url("/resource/prm/staticresources/images/pdf_icon.gif") no-repeat;padding-left: 22px;}
+                #prm-home .item-description {font-size: 1.2em;}
+                #prm-home .clear {clear: both; font-size: 0px; line-height: 0px; height: 1px;}
+                #prm-home .flex-viewport {max-height: 2000px; -webkit-transition: all 1s ease; -moz-transition: all 1s ease; -o-transition: all 1s ease; transition: all 1s ease;}
+                #prm-home .logo{max-width:1px;width:150%}
+                #prm-home .flexslider {
+margin-bottom: 0;
+margin-top: 1em;
+}
+                
+                @font-face {font-family: 'Open Sans';font-style: normal;font-weight: 400;src: local('Open Sans'), local('OpenSans'), url
+
+(//fonts.gstatic.com/s/opensans/v10/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');}
+                /*Tablet*/
+                @media only screen and (max-width: 1023px) {
+                    #prm-home .tile {width:calc((100% - 4em)/2);}
+                }
+                /*Mobile*/
+                @media only screen and (max-width: 480px) {
+                    .mobile{display: block;}
+                    .mobile-inline{display: inline;}
+                    .mobile-inline-block{display: inline-block;}
+                    .non-mobile{display: none;}
+                    .non-mobile-inline{display: none;}
+                    #prm-home{font-size: 9px;}
+                    #prm-home #menu { left: 0;  position: fixed;  top: 4.3em;  width: 100%;background: #333;}
+                    #prm-home #menu li a {  border-top: 1px solid #666;  display: block;  line-height: 3em;  text-align: left;background: url
+
+('/resource/prm_home/images/nav-arrow.png') no-repeat 97% center;background-size:1em auto;}
+                    #prm-home #menu li a:hover{opacity:.5;}
+                    #prm-home .tile {width:calc((100% - 2em));}
+                }
+            </style>
+            
+</html>
+</apex:page>

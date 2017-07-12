@@ -1,0 +1,14 @@
+<apex:page controller="DemoSFDragDropList">
+ <apex:sectionHeader title="" subtitle="SF Drag Drop MultiSelect List Demo"/>
+ <c:SFDragDropList list1="item1;item2;item3;item4;item5" outputFieldId="list_2_serialised"/>
+ <div style="clear:both">
+ <apex:form >
+     <input type="hidden" id="list_2_serialised" name="list_2_serialised" value="{!list2FinalItems}"/>
+     <apex:commandButton action="{!showSelectedItems}" reRender="selectedItems" value="Show Selected Value" status="status"/>
+ </apex:form>
+ <apex:actionStatus id="status" startText="Fetching..."></apex:actionStatus>
+ <apex:outputPanel id="selectedItems">
+     <i>{!list2FinalItems}</i>
+ </apex:outputPanel>
+ </div>
+</apex:page>

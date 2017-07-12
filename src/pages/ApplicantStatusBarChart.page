@@ -1,0 +1,42 @@
+<apex:page controller="ChartController">
+<apex:pageBlock >
+<apex:pageBlockSection >
+    <apex:chart data="{!data}" height="300" width="350">
+
+        <apex:axis type="Numeric" position="left" title="Number of Days" grid="true"
+            fields="data1" dashSize="1">
+            <apex:chartLabel />
+        </apex:axis>
+
+        <apex:axis type="Category" position="bottom" fields="name" title="Application Status">
+            <apex:chartLabel rotate="315"/>
+        </apex:axis>
+
+        <apex:barSeries orientation="vertical" axis="left" stacked="true" xField="name" yField="data1" title="Draft,Submitted,Physically Verfified,Medical Verified,Refree Verified" />
+              
+    </apex:chart>   
+       </apex:pageBlockSection>
+      </apex:pageBlock>
+      
+      <apex:pageBlock >
+       <apex:pageBlockSection >
+        
+    <apex:chart data="{!data}" height="300" width="350">
+        
+        <apex:axis type="Numeric" position="left" title="Number of Days" grid="true"
+            fields="data1" dashSize="1">
+            <apex:chartLabel />
+        </apex:axis>
+
+        <apex:axis type="Category" position="bottom" fields="name" title="Application Status">
+            <apex:chartLabel rotate="315"/>
+        </apex:axis>
+
+         <apex:areaSeries colorSet="#55aa00" axis="left" xField="name" yField="data1" tips="true"/>
+       
+    </apex:chart>   
+        
+        </apex:pageBlockSection> 
+        
+      </apex:pageBlock>   
+</apex:page>

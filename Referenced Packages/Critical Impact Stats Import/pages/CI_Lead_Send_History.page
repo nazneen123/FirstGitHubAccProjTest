@@ -1,0 +1,11 @@
+<apex:page standardController="Lead" extensions="crit.CIDataController" showheader="false" sidebar="false">
+    <script type="text/javascript" charset="utf-8" src="https://sf.criticalimpact.com/extjs-4.2.1/ext-all.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://sf.criticalimpact.com/extjs-4.2.1/resources/css/ext-all.css" />
+    <apex:form >
+        <input type="hidden" value="{!Lead.Email}" id="email"/>
+        <input type="hidden" value="{!Lead.Name}" id="name"/>
+        <div id="gridSpace"></div>
+    </apex:form>
+    <script type="text/javascript" charset="utf-8" src="https://sf.criticalimpact.com/gridlead_sendhistory.js"></script>                
+    
+</apex:page>

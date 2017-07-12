@@ -1,0 +1,196 @@
+<apex:page showHeader="false" sidebar="false" controller="CommunitiesLoginController">
+  <html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta></head>
+
+<div id="prm-home">
+    <div id="#container1">
+        <div id="header1">
+            <div class="site-width1">
+                <div id="header-content1"> 
+                 <div id="logo1">
+                 <a href="https://atosboxapp-developer-edition.ap2.force.com/box/box" title="BOX Portal Image"> 
+                 <apex:image style="width:65px;height:56px;padding-left:0px;" id="theImage" value="{!$Resource.Logoportal}"  />  </a>
+                 <a href="https://atosboxapp-developer-edition.ap2.force.com/box/box" title="BOX Portal">
+                 <span>Licensing Portal</span> </a><br/></div>
+                                <div id="navigation1">
+                              <!-- <apex:outputLabel style="font-size:120%;font-weight:bold;color: #809009;">For Any Assistance</apex:outputLabel> -->
+                                
+                                    <div class="mobile-inline-block" id="menu-icon"></div>
+                                    
+                                    <ul1 class="non-mobile1" id="menu1">
+                                           
+                                            <!--<li><a href="https://atosboxapp-developer-edition.ap2.force.com/box/login" onclick="return openResource();">Logout</a></li>-->
+                                            <!--<li><a  href="https://www.google.co.in/?gfe_rd=cr&ei=BQ1hVrjoFare8gfnpLPQCg" >Register</a></li>-->
+                                            <!--<li><a id= "reg" href="/box/login" >Logout</a></li>-->
+                                            
+                                            <li> 
+                                            
+                                            
+   
+<a id="liveagent_button_online_57328000000PBYI" href="javascript://Chat" style="display: none;font-size:120%;font-weight:bold;color: #eec;" onclick="liveagent.startChat('57328000000PBYI')">
+ For Any Assistance Chat Now</a>
+ <div id="liveagent_button_offline_57328000000PBYI" style="display: none;">
+Sorry, Offline</div>
+
+<script type="text/javascript">
+if (!window._laq) { window._laq = []; }
+window._laq.push(function(){liveagent.showWhenOnline('57328000000PBYI', document.getElementById('liveagent_button_online_57328000000PBYI'));
+liveagent.showWhenOffline('57328000000PBYI', document.getElementById('liveagent_button_offline_57328000000PBYI'));
+});</script>
+
+
+
+<script type='text/javascript' src='https://c.la10.salesforceliveagent.com/content/g/js/36.0/deployment.js'></script>
+<script type='text/javascript'>
+liveagent.init('https://d.la10.salesforceliveagent.com/chat', '57228000000PBV5', '00D280000017Egi');
+</script> 
+                                            
+                                            </li>
+                                            
+                                            
+                                            <li><apex:outputLink value="HelloUser" >{!$User.FirstName} {!$User.LastName}</apex:outputLink></li>
+                                           <li><apex:outputLink value="{!$Site.Prefix}/secur/logout.jsp" rendered="{!NOT(ISPICKVAL($User.UserType,'Guest'))}">Logout</apex:outputLink></li>
+                                    </ul1>
+                                 </div>          
+                </diV>
+            </div>
+        </div>
+        
+        <div id="body">
+        
+        <div class="site-width1">
+                  
+          <apex:insert name="custompage"/><br/><br/><br/><br/><br/>
+
+       
+      
+                       
+            </div>
+            </div>
+                     <div id="footer1">
+                        <div class="site-width1">Copyright ® 2015 BOX Portal. All rights reserved.</div>
+                    </div>   
+    </div>
+</div>    
+    
+
+
+
+    
+    <style type="text/css">
+    
+     <apex:stylesheet value="{!$Resource.new}"/>
+
+ 
+                .mobile{display: none;}
+                .mobile-inline{display: none;}
+                .mobile-inline-block{display: none;}
+                .non-mobile{display: block;}
+                .non-mobile-inline{display: inline;}
+                body.popup-loaded{overflow:hidden;}
+                #prm-home{font-family: Open Sans,Arial,sans serif;font-size: 10px;background: #D1D2D0;padding-top: 4.4em;}
+               <!-- #prm-home img{width: 25%;padding-left: 80px;}-->
+               #prm-home img{width: 95%;padding-left: 26px; height:200px;}
+                #prm-home a img{border:none;}
+                #prm-home .site-width1{max-width:96em;padding:0 1em;margin:auto;}  
+               
+                #prm-home .site-width-plus{max-width:98em;margin:auto;} 
+              
+                <!--#prm-home #header1{background-color: #333;position: fixed;width:100%;top:0;z-index: 1;line-height: 6em;}     -->
+                #prm-home #header1{background-color: #333;position: fixed;width:100%;top:0;z-index: 1;height:6em;}     
+                 
+                #prm-home #header-content1{display:table;background-image: #212121;width: 100%;height:4.4em; }
+                #prm-home #logo1{/*background: url("images/logo.gif");background-size:cover;*/width:1%;display: flex;vertical-align:middle; }
+                #prm-home #logo1 a{background:url("/resource/prm_home/images/logo_with_arrows.png") no-repeat left center;background-size:1.5em auto t;  padding-left:1.0em; font-family: Open Sans,Arial,sans serif;text-decoration: none;font-size: 2em;font-weight: bold;color: #848484;}
+                #prm-home #logo1 span{color: #FBAE19;position: absolute;padding-top: 1em;}
+                #prm-home #navigation1{display: table-cell;text-align: right;vertical-align:middle;}
+                
+                
+                #prm-home #menu-icon{background :url("/resource/prm/staticresources/images/nav-icon.png") no-repeat center;width:3em;height:3em;cursor: pointer;opacity:.7;}
+                #prm-home #menu1 li{display:inline;}
+                #prm-home #menu1 li a{display:inline-block;color: #ededec;text-decoration: none;font-size:1.3em;padding:0 .5em; font-weight: bold;}
+                #prm-home #menu1 li a:hover{color:#c0c0c0;}
+                #prm-home .flexslider{margin-bottom: 0;margin-top: 1em;} 
+                #prm-home .slides a {display: block; padding: 5px;text-decoration: none;border: 1px solid #ececec;margin: 5px;text-align: center;}
+                #prm-home .slides a span1{color: #666;font-size: 1.1em;display: block;font-weight: bold;line-height: 1em;padding-top: 5px;}
+                #prm-home .slides a:hover span{color:#333;}
+                #prm-home #tiles{margin-top:1em;}
+                #prm-home .tile {float:left;width:calc((100% - 6em)/3);margin: 1em; }
+                #prm-home .tile-content {background: #fff;  -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.2); -moz-box-shadow: 0 1px 4px rgba(0,0,0,.2); -o-box-shadow: 0 1px 4px rgba(0,0,0,.2); box-shadow: 0 1px 4px rgba(0,0,0,.2); zoom: 1;}
+                #prm-home .tile a{color: #666;text-decoration: none;text-align: center;}
+                #prm-home .tile a .tile-title {color: #666;padding-top:.5em;font-size: 1.4em;font-weight: bold;}
+                #prm-home .tile a .tile-description {padding-bottom:.5em;font-size: 1.1em;}
+                #prm-home #footer1{background-color: #333;color:#666;line-height: 4em;}
+                #prm-home #featured-resources {  background: #fff;  -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.2); -moz-box-shadow: 0 1px 4px rgba(0,0,0,.2); -o-box-shadow: 0 1px 4px rgba(0,0,0,.2); box-shadow: 0 1px 4px rgba(0,0,0,.2);   margin-bottom: 1em;  margin-top: 1em;}
+                #prm-home #featured-title {  background-color: #424242;  color: #fff;  font-size: 1.5em;  font-weight: bold;  line-height: 2.2em;  padding-left: 10px;}
+                #prm-home .resource-item {padding: 10px;}
+                #prm-home .resource-item:nth-child(even) {background-color:  #ececec;}
+                #prm-home .item-link {font-size: 1.3em;font-weight: bold;line-height: 1.8em;}
+                #prm-home .PDF-icon {background: url("/resource/prm/staticresources/images/pdf_icon.gif") no-repeat;padding-left: 22px;}
+                #prm-home .item-description {font-size: 1.2em;}
+                #prm-home .clear {clear: both; font-size: 0px; line-height: 0px; height: 1px;}
+                #prm-home .flex-viewport {max-height: 2000px; -webkit-transition: all 1s ease; -moz-transition: all 1s ease; -o-transition: all 1s ease; transition: all 1s ease;}
+                <!--#prm-home .logo{max-width:1px;width:100%} -->
+                #prm-home .logo{max-width:100px;width:100%}
+                #prm-home .flexslider {
+margin-bottom: 0;
+margin-top: 1em;
+}
+
+
+#Prm-home ..content {
+min-height: 700px;
+height: auto !important;
+height: 700px;
+margin: 20px 0 0 0;
+background-color: #fff;
+border-right: 5px solid #a5c0e0;
+border-bottom: 5px solid #a5c0e0;
+padding: 60px;
+}
+
+#Prm-home .ul, menu, dir {
+display: block;
+list-style-type: disc;
+-webkit-margin-before: 1em;
+-webkit-margin-after: 1em;
+-webkit-margin-start: 0px;
+-webkit-margin-end: 0px;
+-webkit-padding-start: 40px;
+}
+
+                
+                @font-face {font-family: 'Open Sans';font-style: normal;font-weight: 400;src: local('Open Sans'), local('OpenSans'), url(//fonts.gstatic.com/s/opensans/v10/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');}
+                /*Tablet*/
+                @media only screen and (max-width: 1023px) {
+                    #prm-home1 .tile {width:calc((100% - 4em)/2);}
+                }
+                /*Mobile*/
+                @media only screen and (max-width: 480px) {
+                    .mobile{display: block;}
+                    .mobile-inline{display: inline;}
+                    .mobile-inline-block{display: inline-block;}
+                    .non-mobile1{display: none;}
+                    .non-mobile1-inline{display: none;}
+                    #prm-home{font-size: 9px;}
+                    #prm-home #menu1 { left: 0;  position: fixed;  top: 4.3em;  width: 100%;background: #333;}
+                    #prm-home #menu1 li a {  border-top: 1px solid #666;  display: block;  line-height: 3em;  text-align: left;background: url('/resource/prm_home/images/nav-arrow.png') no-repeat 97% center;background-size:1em auto;}
+                    #prm-home #menu1 li a:hover{opacity:.5;}
+                    #prm-home .tile {width:calc((100% - 2em));}
+                }
+            </style>
+      
+      <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-72146317-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+            
+</html> 
+  
+</apex:page>
